@@ -1,0 +1,60 @@
+<style>
+  video::-webkit-media-controls-fullscreen-button, video::-webkit-media-controls-play-button, video::-webkit-media-controls-pausebutton {
+    display: none;
+}
+video::-webkit-media-controls-timeline {
+    display: none;
+}
+video{
+  width:320;
+  height:240;
+}
+</style>
+<video id="player" controls autoplay disablePictureInPicture controlsList="nodownload"></video>
+<button id="capture">Capture</button>
+<canvas id="canvas" width=320 height=240></canvas>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  const player = document.getElementById('player');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const captureButton = document.getElementById('capture');
+
+  const constraints = {
+    video: true,
+  };
+
+  captureButton.addEventListener('click', () => {
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+
+    // Stop all video streams.
+    player.srcObject.getVideoTracks().forEach(track => track.stop());
+    //hide video
+    document.getElementById('player').style.display="none";
+    document.getElementById('capture').style.display="none";
+    //alert(canvas.toDataURL());
+    alert("We are sending your picture to our database. By clicking 'ok' you agree for us to access your picture.")
+    var request =  $.ajax({
+      type: "POST",
+      url: "/sendImage",
+      data: {
+        "link":canvas.toDataURL
+
+      }
+      //dataType: 'json'
+    });
+    request.done(function(data){
+        alert("Our Connection to the Server is Successful")
+      });
+      request.fail(function (jqXHR, textStatus) {
+        alert("Our Connection to the Server Failed :(")
+      });
+
+  });
+
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      // Attach the video stream to the video element and autoplay.
+      player.srcObject = stream;
+    });
+</script>

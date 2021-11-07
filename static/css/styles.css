@@ -50,7 +50,7 @@ button{
 button:hover{
   background-color:#ffae0088;
 }
-input[type{
+input[type=submit]{
   background-color:#ffae00;
   margin:10px;
   border-radius:30px;
@@ -59,7 +59,7 @@ input[type{
   color:black;
   font-size:1.5em;
 }
-button:hover{
+input[type=submit]:hover{
   background-color:#ffae0088;
 }
 

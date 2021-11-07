@@ -70,5 +70,20 @@ function result(){
 }
 function click(clicked){
   const pressed_cell = clicked.target;
+  const clicked_index = parseInt(pressed_cell.getAttribute('data-cell-index'));
+  if(state[clicked_index] !==  "" || !active){
+    return;
+  }
+  handle(pressed_cell,clicked_index);
+  result();
   
 }
+function redo(){
+  active = true;
+  player = "x";
+  state = ["", "", "", "", "", "", "", "", ""];
+  statusDisplay.innerHTML = currentPlayerTurn();
+  document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
+}
+document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', click));
+document.querySelector('.restart').addEventListener('click', redo);

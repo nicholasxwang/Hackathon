@@ -2,13 +2,22 @@ var canvas;
 var context;
 var numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
 
-window.onload = function() {  
+window.onload = function() {
   var upArrow = 38;
   var downArrow = 40;
   var rightArrow = 39;
   var leftArrow = 37;
+}
 
-  window.onkeypress = function(key) {
+window.addEventListener('load', function() {
+  canvas = document.getElementById("canvas");
+  context = canvas.getContext("2d");
+  document.body.appendChild(canvas);
+  generateStartingTiles();
+  draw();
+
+  document.addEventListener("onkeyup", function(key) {
+    alert(key.keyCode + " pressed")
     switch (key.keyCode) {
       case upArrow:
         for (var x = 1; x < 4; x++) {
@@ -24,15 +33,7 @@ window.onload = function() {
         }
     }
     draw();
-  };
-};
-
-window.addEventListener('load', function() {
-  canvas = document.getElementById("canvas");
-  context = canvas.getContext("2d");
-  document.body.appendChild(canvas);
-  generateStartingTiles();
-  draw();
+  });
 });
 
 function draw() {

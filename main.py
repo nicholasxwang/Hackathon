@@ -12,7 +12,6 @@ app.config['MAIL_USERNAME'] = 'virtualholidaysmidnighthacks@gmail.com'
 app.config['MAIL_PASSWORD'] = os.getenv('psw')
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config["DEBUG"] = True
 mail = Mail(app)
 from pyzipcode import ZipCodeDatabase
 zcdb = ZipCodeDatabase()

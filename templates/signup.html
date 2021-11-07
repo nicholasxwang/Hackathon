@@ -8,7 +8,7 @@
   <form method="POST">
   
   <h1>Sign Up!</h1><div id="bubble"  style="display:none;" class="valid sb1">Message: Valid Email</div><div id="bubble2"  style="display:none;" class="valid2 sb2">Message: Invalid Email</div>
-  <span class="label" >Email:</span><br>
+  <span class="label" onkeyup="changeEmail(this.value)" >Email:</span><br>
   <input type="email" name="email" id="email"><br>
 
   
@@ -296,13 +296,7 @@ function validate(email) {
     return false;
   }
 }
-alert("a");
-alert(window.onload);
-alert(document.getElementById('email').value);
-var userInput = document.getElementById('email').value;
-  userInput.onkeyup = function() {
-    alert("a");
-    var value = this.value;
+function changeEmail(value){
     if (validate(value)){
       document.getElementById("bubble").style.display="block";
       document.getElementById("bubble2").style.display="none";

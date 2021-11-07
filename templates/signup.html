@@ -22,8 +22,8 @@
   <span class="label">Zip Code:</span><br>
   <input type="number" id="zipcode"><br>
   
-  <span class="label" >Beta Code</span><br>
-  <span id="betaValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><<input type="text" name="code" id="beta"><br>
+  <span class="label">Beta Code</span><br>
+  <span id="betaValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><input onkeyup="checkBetaCode()" type="text" name="code" id="beta"><br>
   
   
   <span class="label">Country:</span><br>
@@ -339,7 +339,7 @@ var value = document.getElementById("password").value;
   };
   
   function checkBetaCode() {
-    var value = document.getElementById("email").value;
+    var value = document.getElementById("beta").value;
     var request =  $.ajax({
       type: "POST",
       url: "/checkBetaCode",
@@ -348,7 +348,7 @@ var value = document.getElementById("password").value;
       }
     });
     request.done(function(data){
-        if (data=="True")){
+        if (data=="True"){
       document.getElementById("bubble").style.display="block";
       document.getElementById("bubble2").style.display="none";
       document.getElementById("bubble").innerHTML = "Message: Valid Beta Code!";

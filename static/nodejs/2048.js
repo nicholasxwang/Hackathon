@@ -82,7 +82,7 @@ window.addEventListener('load', function() {
                   copy[x2-1][y] *= 2; 
                   copy[x2][y] = 0;
                 } else {
-                  copy[x2-1][y] = copy[x][y2];
+                  copy[x2-1][y] = copy[x2][y];
                   copy[x2][y] = 0;
                   numbers = JSON.parse(JSON.stringify(copy));
                 }
@@ -108,7 +108,7 @@ window.addEventListener('load', function() {
                   copy[x2+1][y] *= 2; 
                   copy[x2][y] = 0;
                 } else {
-                  copy[x2+1][y] = copy[x][y2];
+                  copy[x2+1][y] = copy[x2][y];
                   copy[x2][y] = 0;
                   numbers = JSON.parse(JSON.stringify(copy));
                 }

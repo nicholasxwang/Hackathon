@@ -84,8 +84,10 @@ function controls(){
 build(425, 3); 
 window.addEventListener("keydown", controls, true);
 function moveTo(dx,dy){
-  var data = context.getImageData(destX, destY, 15, 15);
-  
+  var dataaa = context.getImg(destX, destY, 15, 15);
+  var dataa = dataaa.data;
+  var movable = 1;
+  for()
 }
 
 

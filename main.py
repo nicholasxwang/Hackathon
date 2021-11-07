@@ -23,4 +23,8 @@ def game2048():
 @app.route("/maze")
 def game_maze():
   return render_template("maze.html")
+
+@app.route("/snake")
+def snake_game():
+  return render_template("snake.html")
 app.run(host='0.0.0.0', port=8080)

@@ -13,7 +13,14 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.applet.*;
+import java.awt.*;
 
+public class snake extends Applet{
+   public void paint(Graphics g){
+      g.drawString("Welcome in Java Applet.",40,20);
+   }
+}
 public class snake extends JPanel implements KeyListener, ActionListener {
 	
 	private boolean play = false;

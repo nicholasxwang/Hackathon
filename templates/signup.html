@@ -4,20 +4,21 @@
   <title>Virtual Trick or Treat</title>
 </head>
 <body>
+  <form>
   <h1>Sign Up!</h1>
-  <span class="label">Email:</span>
+  <span class="label">Email:</span><br>
   <input type="email" id="email"><br>
   
-  <span class="label">Username:</span>
+  <span class="label">Username:</span><br>
   <input type="text" id="username"><br>
   
-  <span class="label">Password:</span>
+  <span class="label">Password:</span><br>
   <input type="password" id="password"><br>
   
-  <span class="label">Zip Code:</span>
+  <span class="label">Zip Code:</span><br>
   <input type="number" id="zipcode"><br>
   
-  <span class="label">Country:</span>
+  <span class="label">Country:</span><br>
   <select id="country" name="country">
    <option value="Afganistan">Afghanistan</option>
    <option value="Albania">Albania</option>
@@ -267,7 +268,7 @@
    <option value="Zimbabwe">Zimbabwe</option>
   </select><br>
 
-  <button id="signup">Sign Up</button>
+  <input type="submit">Sign Up</button>
   <a href="/"><button>Back</button></a>
 </body>
 {% endblock %}

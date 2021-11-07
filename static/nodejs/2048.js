@@ -9,7 +9,17 @@ window.onload = function() {
   var leftArrow = 37;
 
   window.onkeypress = function(key) {
-    
+    switch (key.keyCode) {
+      case upArrow:
+        for (var x = 1; x < 4; x++) {
+          for (var y = 0; y < 4; y++) {
+            for (var i = y; i > 0; y--) {
+              
+            }
+          }
+        }
+    }
+    draw();
   };
 };
 
@@ -17,17 +27,39 @@ window.addEventListener('load', function() {
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
   document.body.appendChild(canvas);
-  draw();
   generateStartingTiles();
+  draw();
 });
 
 function draw() {
-  context.font = "50px Arial serif";
-  context.fillStyle = "lightgray";
+  alert(numbers);
+  context.font = "50px Verdana serif";
   
   for (var x = 0; x < 4; x++) {
     for (var y = 0; y < 4; y++) {
-      context.fillRect(x*200, y*200, 198, 198);
+      switch (numbers[x][y]) {
+        case 0:
+         context.fillStyle = "rgb(100, 100, 100)";
+         context.fillRect(x*150, y*150, 148, 148);
+         context.fillStyle = "rgb(255, 255, 255)";
+         break;
+        
+        case 2:
+          context.fillStyle = "rgb(200, 200, 200)";
+          context.fillRect(x*150, y*150, 148, 148);
+          context.fillStyle = "rgb(0, 0, 0)";
+          break;
+
+        case 4:
+         context.fillStyle = "rgb(150, 150, 150)";
+         context.fillRect(x*150, y*150, 148, 148);
+         context.fillStyle = "rgb(0, 0, 0)";
+         break;
+      }
+
+      if (numbers[x][y] > 0)
+        context.fillText(numbers[x][y].toString(), 60+x*150, 80+y*150);
+      
     }
   }
 }
@@ -45,7 +77,7 @@ function generateStartingTiles()
     y2 = Math.floor(Math.random() * 4);
   }
   
-  var num = Math.random() < 0.15 ? 4 : 2;
+  var num = Math.random() < 0.25 ? 4 : 2;
   numbers[x][y] = num;
   numbers[x2][y2] = 2;
 }

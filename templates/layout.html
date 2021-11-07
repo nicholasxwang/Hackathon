@@ -9,3 +9,14 @@
 <!--Title!-->
 <title>Virtual Trick or Treat</title>
 {% block main %} {% endblock %}
+
+<!--Twemoji!-->
+<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+<script>
+  window.onload = function() {      
+      twemoji.parse(document.body, 
+              {folder: 'svg', ext: '.svg',size: "32x32"},
+      );
+  }
+
+</script>

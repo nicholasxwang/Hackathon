@@ -17,7 +17,7 @@ mail = Mail(app)
 from pyzipcode import ZipCodeDatabase
 zcdb = ZipCodeDatabase()
 
-@app.route("/signUp")
+@app.route("/signUp",methods=["POST"])
 def signUp():
   email = request.form.get("email")
   username = request.form.get("username")
@@ -26,7 +26,7 @@ def signUp():
   beta_code = request.form.get("beta_code")
   country = "US"
   import pymongo
-  from weurkzeug.security import generate_password_hash, check_password_hash
+  from werkzeug.security import generate_password_hash, check_password_hash
   db =pymongo.MongoClient(os.environ['token']).Users.Users
   for a in db:
     if a["email"] == email:

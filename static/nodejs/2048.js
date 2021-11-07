@@ -16,6 +16,12 @@ window.addEventListener('load', function() {
   generateStartingTiles();
   draw();
 
+  window.onresize = function() {
+    canvas.width = window.innerWidth * 0.8;
+    canvas.height = window.innerHeight * 0.8;
+    draw();
+  }
+
   document.addEventListener("keydown", function(key) {
     var valid = false;
     var copy = JSON.parse(JSON.stringify(numbers));

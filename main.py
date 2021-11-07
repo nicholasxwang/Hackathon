@@ -13,6 +13,8 @@ app.config['MAIL_USE_SSL'] = True
 from pyzipcode import ZipCodeDatabase
 zcdb = ZipCodeDatabase()
 
+
+
 @app.route("/checkValidZipCode",methods=["POST"])
 def checkzipcode():
   try:

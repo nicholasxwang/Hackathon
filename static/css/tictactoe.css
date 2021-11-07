@@ -10,15 +10,6 @@ section{
   color: red;
   margin: 5px auto;
 }
-.container{
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  width: 306px;
-    margin: 10px auto;
-    background-color: black;
-    color: white;
-
-}
 .cell{
   font-family: "Arial", serif;
   width: 100px;
@@ -28,6 +19,15 @@ section{
   cursor: pointer;
   line-height: 100px;
   font-size: 50px;
+}
+.container{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 306px;
+  margin: 10px auto;
+  background-image:"bkg.jpg";
+  color: white;
+
 }
 .status{
   font-size: 75px;

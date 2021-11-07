@@ -19,7 +19,7 @@ window.addEventListener('load', function() {
     keys.innerHTML = key.code;
     switch (key.keyCode) {
       case upArrow:
-        for (var y = 1; y < 4; y++) {
+        for (var y = 1; y <= 4; y++) {
           for (var x = 0; x < 4; x++) {
             var y2 = y;
             while (y2 > 0 && numbers[x][y2] > 0 && numbers[x][y2-1] == 0) {
@@ -33,10 +33,10 @@ window.addEventListener('load', function() {
         break;
 
       case downArrow:
-        for (var y = 4; y >= 0; y--) {
-          for (var x = 0; x <= 4; x++) {
-            y2 = y;
-            while (y2 < 3 && numbers[x][y2] > 0 && numbers[x][y2+1] == 0) {
+        for (var y = 3; y >= 0; y--) {
+          for (var x = 0; x < 4; x++) {
+            var y2 = y;
+            while (y2 < 4 && numbers[x][y2] > 0 && numbers[x][y2+1] == 0) {
               numbers[x][y2+1] = numbers[x][y2];
               numbers[x][y2] = 0;
 
@@ -45,6 +45,34 @@ window.addEventListener('load', function() {
           }
         }
         break;
+
+        case leftArrow:
+          for (var y = 0; y < 4; y++) {
+            for (var x = 1; x < 4; x++) {
+              var x2 = x;
+              while (x2 > 0 && numbers[x2][y] > 0 && numbers[x2-1][y] == 0) {
+                numbers[x2-1][y] = numbers[x2][y];
+                numbers[x2][y] = 0;
+
+                x2--;
+              }
+            }
+          }
+          break;
+
+        case rightArrow:
+          for (var y = 0; y < 4; y++) {
+            for (var x = 1; x < 4; x++) {
+              var x2 = x;
+              while (x2 > 0 && numbers[x2][y] > 0 && numbers[x2-1][y] == 0) {
+                numbers[x2-1][y] = numbers[x2][y];
+                numbers[x2][y] = 0;
+
+                x2--;
+              }
+            }
+          }
+          break;
     }
     draw();
   });

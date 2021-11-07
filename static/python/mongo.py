@@ -30,4 +30,5 @@ def get_user(email):
       return dictionary
   return {}
 
-    
+def user_exists():
+  pass

@@ -1,11 +1,4 @@
-var canvas = document.createElement("canvas");
-canvas.innerHTML = "This browser does not support canvas or JavaScript.";
-canvas.width = "100px";
-canvas.height = "100px";
-canvas.style.backgroundColor = "lightgray";
-canvas.style.border = "1px solid gray";
-canvas.style.paddingLeft = "5%";
-canvas.style.paddingRight = "5%";
+var canvas = document.getElementById("canvas");
 
 var context = canvas.getContext("2d");
 var numbers = [0, 0, 0, 0] * 4;

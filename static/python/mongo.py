@@ -4,8 +4,8 @@ from weurkzeug.security import generate_password_hash, check_password_hash
 
 def get_user(email):
   db = pymongo.MongoClient(os.environ['token']).Users.Users.find({})
-  dictionary = {}
   for i in db:
+    dictionary = {}
     try:
       dictionary["email"]=i["email"]
     except:
@@ -19,8 +19,15 @@ def get_user(email):
     except:
       dictionary["password"] = None
     try:
-      dictionary["username"]=i["username"]
+      dictionary["candy_amount"]=i["candy_amount"]
     except:
-      dictionary["username"] = None
+      dictionary["candy_amount"] = None
+    try:
+      dictionary["candy_dictionary"]=i["candy_dictionary"]
+    except:
+      dictionary["candy_dictionary"] = None
+    if dictionary["email"]==email:
+      return dictionary
+  return {}
 
     

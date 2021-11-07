@@ -139,7 +139,7 @@ select{
   right: 240px;
   top: 6px;
 }
-.valid {
+.valid2 {
   margin-left:10px;
   width: 200px;
   margin: 50px auto;
@@ -155,7 +155,7 @@ select{
   top:-90px;
 }
 
-.sb1:before {
+.sb2:before {
   content: "";
   width: 0px;
   height: 0px;

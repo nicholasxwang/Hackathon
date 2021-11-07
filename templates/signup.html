@@ -8,8 +8,8 @@
   <form method="POST">
   
   <h1>Sign Up!</h1><div id="bubble"  style="display:none;" class="valid sb1">Message: Valid Email</div><div id="bubble2"  style="display:none;" class="valid2 sb2">Message: Invalid Email</div>
-  <span class="label" onkeyup="changeEmail()" >Email:</span><br>
-  <input type="email" name="email" id="email"><br>
+  <span class="label" >Email: <span id="emailValid" style="display:none;">✅</span></span><br>
+  <input type="email" onkeyup="changeEmail()" name="email" id="email"><br>
 
   
   <span class="label" >Username:</span><br>
@@ -297,16 +297,17 @@ function validate(email) {
   };
 };
 function changeEmail() {
-    alert("hi");
-    var value = document.getElementById("email");
+    var value = document.getElementById("email").value;
     if (validate(value)){
       document.getElementById("bubble").style.display="block";
       document.getElementById("bubble2").style.display="none";
-      document.getElementById("bubble2").value = "Message: Valid Email!";
+      document.getElementById("bubble").value = "Message: Valid Email!";
+      document.getElementById("emailValid").style.display="block";
     }else{
       document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
       document.getElementById("bubble2").value = "Message: Invalid Email!";
+      document.getElementById("emailValid").style.display="none";
     }
   };
   </script>

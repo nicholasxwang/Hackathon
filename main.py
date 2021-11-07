@@ -16,6 +16,11 @@ mail = Mail(app)
 from pyzipcode import ZipCodeDatabase
 zcdb = ZipCodeDatabase()
 
+@app.route("/trick/<a>")
+def tricknow(a):
+  import random
+  link = random.choice(["/maze","/tictactoe","/2048"])
+  return redirect(link)
 @app.route("/login",methods=["POST"])
 def login2():
   import pymongo
@@ -141,19 +146,23 @@ def dashboard():
       zip= i["zip"]
   #return str(name)
   houses_zip = []
+  houses_city = []
   houses_state = []
   houses_country = []
   for i in db.find({}):
     if zip == i["zip"]:
-      houses_zip.append(i["name"])
+      houses_zip.append(i["username"])
+      continue
+    if ZipCodeDatabase()[int(zip)].place == ZipCodeDatabase()[int(i["zip"])].place:
+      houses_city.append(i["username"])
       continue
     if ZipCodeDatabase()[int(zip)].state == ZipCodeDatabase()[int(i["zip"])].state:
-      houses_state.append(i["name"])
+      houses_state.append(i["username"])
       continue
-    if ZipCodeDatabase()[int(zip)].country == ZipCodeDatabase()[int(i["zip"])].country:
-      houses_country.append(i["name"])
+    else:
+      houses_country.append(i["username"])
       continue
-  return render_template('dashboard.html', name = name, candy_num=candy_num, zip=zip, place=ZipCodeDatabase()[int(zip)].place,state =ZipCodeDatabase()[int(zip)].state,houses_zip=houses_zip,houses_state=houses_state,houses_country=houses_country)
+  return render_template('dashboard.html', name = name, candy_num=candy_num, zip=zip, place=ZipCodeDatabase()[int(zip)].place,state =ZipCodeDatabase()[int(zip)].state,houses_zip=houses_zip,houses_city=houses_city,houses_state=houses_state,houses_country=houses_country)
 
 @app.route("/2048")
 def game2048():

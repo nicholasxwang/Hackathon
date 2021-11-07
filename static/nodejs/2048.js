@@ -24,7 +24,6 @@ window.addEventListener('load', function() {
 
   document.addEventListener("keydown", function(key) {
     var valid = false;
-    var copy = JSON.parse(JSON.stringify(numbers));
 
     switch (key.keyCode) {
       case upArrow:
@@ -34,12 +33,12 @@ window.addEventListener('load', function() {
             while (y2 > 0 && numbers[x][y2] > 0 && (numbers[x][y2-1] == 0 || numbers[x][y2-1] == numbers[x][y2])) {
               valid = true;
               if (numbers[x][y2-1] == numbers[x][y2]) {
-                copy[x][y2-1] *= 2; 
-                copy[x][y2] = 0;
+                numbers[x][y2-1] *= 2; 
+                numbers[x][y2] = 0;
               } else {
-                copy[x][y2-1] = copy[x][y2];
-                copy[x][y2] = 0;
-                numbers = JSON.parse(JSON.stringify(copy));
+                numbers[x][y2-1] = numbers[x][y2];
+                numbers[x][y2] = 0;
+                
               }
 
               y2--;
@@ -47,7 +46,7 @@ window.addEventListener('load', function() {
           }
         }
 
-        numbers = JSON.parse(JSON.stringify(copy));
+        
 
         
         generateNewNum(valid);
@@ -60,19 +59,19 @@ window.addEventListener('load', function() {
             while (y2 < 4 && numbers[x][y2] > 0 && (numbers[x][y2+1] == 0 || numbers[x][y2+1] == numbers[x][y2])) {
               valid = true;
               if (numbers[x][y2+1] == numbers[x][y2]) {
-                copy[x][y2+1] *= 2; 
-                copy[x][y2] = 0;
+                numbers[x][y2+1] *= 2; 
+                numbers[x][y2] = 0;
               } else {
-                copy[x][y2+1] = copy[x][y2];
-                copy[x][y2] = 0;
-                numbers = JSON.parse(JSON.stringify(copy));
+                numbers[x][y2+1] = numbers[x][y2];
+                numbers[x][y2] = 0;
+                
               }
 
               y2++;
             }
           }
         }
-        numbers = JSON.parse(JSON.stringify(copy));
+        
 
         
         generateNewNum(valid);
@@ -85,12 +84,12 @@ window.addEventListener('load', function() {
               while (x2 > 0 && numbers[x2][y] > 0 && (numbers[x2-1][y] == 0 || numbers[x2-1][y] == numbers[x2][y])) {
                 valid = true;
                 if (numbers[x2-1][y] == numbers[x2][y]) {
-                  copy[x2-1][y] *= 2; 
-                  copy[x2][y] = 0;
+                  numbers[x2-1][y] *= 2; 
+                  numbers[x2][y] = 0;
                 } else {
-                  copy[x2-1][y] = copy[x2][y];
-                  copy[x2][y] = 0;
-                  numbers = JSON.parse(JSON.stringify(copy));
+                  numbers[x2-1][y] = numbers[x2][y];
+                  numbers[x2][y] = 0;
+                  
                 }
 
                 x2--;
@@ -98,7 +97,7 @@ window.addEventListener('load', function() {
             }
           }
 
-          numbers = JSON.parse(JSON.stringify(copy));
+          
 
           
           generateNewNum(valid);
@@ -111,12 +110,12 @@ window.addEventListener('load', function() {
               while (x2 < 3 && numbers[x2][y] > 0 && (numbers[x2+1][y] == 0 || numbers[x2+1][y] == numbers[x2][y])) {
                 valid = true;
                 if (numbers[x2+1][y] == numbers[x2][y]) {
-                  copy[x2+1][y] *= 2; 
-                  copy[x2][y] = 0;
+                  numbers[x2+1][y] *= 2; 
+                  numbers[x2][y] = 0;
                 } else {
-                  copy[x2+1][y] = copy[x2][y];
-                  copy[x2][y] = 0;
-                  numbers = JSON.parse(JSON.stringify(copy));
+                  numbers[x2+1][y] = numbers[x2][y];
+                  numbers[x2][y] = 0;
+                  
                 }
                 numbers[x2][y] = 0;
 
@@ -125,7 +124,7 @@ window.addEventListener('load', function() {
             }
           }
 
-          numbers = JSON.parse(JSON.stringify(copy));
+          
 
           
           generateNewNum(valid);

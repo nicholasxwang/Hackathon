@@ -113,7 +113,8 @@ select{
   border-radius:20px;
   width:300px;
   float:left;
-  margin:20px;
+  margin:30px;
+  height:500px;
 }
 
 .valid {

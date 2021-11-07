@@ -1,9 +1,9 @@
 var canvas = document.getElementById("maze");
 var context = canvas.getContext("2d");
-var rectangleX = 450;
-var rectangleY = 5;
-var width = 560;
-var height = 560;
+var rectangleX = 425;
+var rectangleY = 3;
+var width = 556;
+var height = 556;
 var interval;
 function createMaze(rx,ry)
 {
@@ -31,7 +31,7 @@ function drawRect(dx,dy,style){
     context.fillStyle = style;
     context.fill();
 }
-createMaze(450, 5);
+createMaze(425, 3);
 function makeWhite(xc,yc,widthh,height){
   context.beginPath();
     context.rect(xc, yc, widthh, height);
@@ -69,7 +69,7 @@ function moveRect(keyPress){
   }
   moveAllow = canMoveTo(postX, postY);
   if (moveAllow === 1){
-    drawRect(newX, newY, "#0000FF");
+    drawRect(postX, postY, "#0000FF");
     rectangleX = postX;
     rectangleY = postY;
   }
@@ -84,13 +84,13 @@ function moveRect(keyPress){
         window.removeEventListener("keydown", moveRect, true);
   }
 }
-createMaze(450, 5);                        
+createMaze(425,3);                        
 window.addEventListener("keydown", moveRect, true);
 function canMoveTo(destinationx,destinationy){
     var imgData = context.getImageData(destinationx, destinationy, 15, 15);
     var data = imgData.data;
     var canMove = 1;
-    if (destinationX >= 0 && destinationX <= width - 15 && destY >= 0 && destY <= height - 15) { 
+    if (destinationx >= 0 && destinationy <= width - 15 && destinationy >= 0 && destinationy <= height - 15) { 
       for(var i = 0; i<900; i+=4){
         if(data[i] === 0 && data[i+1] === 0 &&  data[i+2] === 0){
           canMove=0;

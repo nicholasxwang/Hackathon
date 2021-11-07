@@ -1,8 +1,9 @@
-var canvas = document.getElementById("canvas");
-
-var context = canvas.getContext("2d");
+var canvas;
+var context;
+var 
 var numbers = [0, 0, 0, 0] * 4;
 
+alert("starting")
 window.onload = function() {  
   var upArrow = 38;
   var downArrow = 40;
@@ -34,12 +35,9 @@ function generateStartingTiles() {
 
   var x2 = Math.floor(Math.random() * 4);
   var y2 = Math.floor(Math.random() * 4);
-  while (x != x2 || y != y2) {
+  while (x == x2 || y == y2) {
     x2 = Math.floor(Math.random() * 4);
     y2 = Math.floor(Math.random() * 4);
-
-    if (x != x2 || y != y2)
-      break;
   }
 
   var num = Math.random() < 0.15 ? 4 : 2;

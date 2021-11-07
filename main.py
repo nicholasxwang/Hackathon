@@ -4,7 +4,7 @@ import os
 import json
 app = Flask('app')
 mail = Mail(app)
-app.config['MAIL_SERVER']='smtp.mail.com'
+app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = os.getenv("email")
 app.config['MAIL_PASSWORD'] = os.getenv("password")
@@ -13,6 +13,14 @@ app.config['MAIL_USE_SSL'] = True
 from pyzipcode import ZipCodeDatabase
 zcdb = ZipCodeDatabase()
 
+@app.route("/signUp")
+def signUp():
+  email = request.form.get("email")
+  username = request.form.get("username")
+  password = request.form.get("password")
+  zip_code = request.form.get("zipCode")
+  betaCode = request.form.get("beta_code")
+  country = "US"
 
 
 @app.route("/checkValidZipCode",methods=["POST"])

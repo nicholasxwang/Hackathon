@@ -4,9 +4,9 @@ let state = ["", "", "", "", "", "", "", "", ""];
 let player = "x";
 let active = true;
 const win = "Winner is: " + player;
-const drawMessage = "Draw!";
-const currentPlayerTurn = "Turn: " + player;
-statusDisplay.innerHTML = currentPlayerTurn();
+const draw = "Draw!";
+const turn = "Turn: " + player;
+statusDisplay.innerHTML = turn();
 /* 
 0 1 2
 3 4 5
@@ -36,7 +36,7 @@ function handle(cell,index){
 }
 function handlePlayer() {
     player = player === "X" ? "O" : "X";
-    statusDisplay.innerHTML = currentPlayerTurn();
+    statusDisplay.innerHTML = turn();
 }
 function result(){
   let win = false;
@@ -60,7 +60,7 @@ function result(){
   }
   var draw = !state.includes("");
   if (win == true){
-    statusDisplay.innerHTML = drawMessage();
+    statusDisplay.innerHTML = draw();
     gameActive = false;
     return;
   
@@ -82,7 +82,7 @@ function redo(){
   active = true;
   player = "x";
   state = ["", "", "", "", "", "", "", "", ""];
-  statusDisplay.innerHTML = currentPlayerTurn();
+  statusDisplay.innerHTML = turn();
   document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', click));

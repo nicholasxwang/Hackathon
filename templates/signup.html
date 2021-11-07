@@ -400,7 +400,11 @@ var value = document.getElementById("password").value;
       type: "POST",
       url: "/signUp,
       data: {
-        "username":document.getElementById("password").value
+        "username":document.getElementById("username").value,
+        "password":document.getElementById("password").value,
+        "zip_code":document.getElementById("zipcode").value,
+        "email":document.getElementById("email").value
+         "beta_code":document.getElementById("beta").value
       }
       });
       request.done(function(data){

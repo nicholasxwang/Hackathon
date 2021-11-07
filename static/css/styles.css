@@ -30,6 +30,10 @@ h1 {
   background-color: rgba(214, 137, 16, 0.5);
 }
 
+.text {
+  text-align: center;
+}
+
 .body-div {
   padding: 5% 10% 5% 10%;
   margin-right:3%;

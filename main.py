@@ -22,9 +22,25 @@ def signUp():
   email = request.form.get("email")
   username = request.form.get("username")
   password = request.form.get("password")
-  zip_code = request.form.get("zipCode")
-  betaCode = request.form.get("beta_code")
+  zip_code = request.form.get("zip_code")
+  beta_code = request.form.get("beta_code")
   country = "US"
+  import pymongo
+  from weurkzeug.security import generate_password_hash, check_password_hash
+  db =pymongo.MongoClient(os.environ['token']).Users.Users
+  for a in db:
+    if a["email"] == email:
+      return "Your email is taken!"
+    if a["username"] == username:
+      return "Your username is taken!"
+  db.insert_one({"_id":len(db),"email":email,"password":generate_password_hash(password),"zip":zip_code,"beta":beta_code,"country":country,"username":username})
+  with open("static/json/taken_codes.json","r") as file:
+    file = json.load(file)
+  file.append(beta_code)
+  with open("static/json/taken_codes.json","w") as out:
+    json.dump(file,out)
+  return "Success!"
+  
 
 
 @app.route("/checkValidZipCode",methods=["POST"])

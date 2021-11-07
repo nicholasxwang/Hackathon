@@ -3,23 +3,31 @@
     "templates/2048.html": [
       {
         "id": "c436868e-0d50-4323-b667-905e9f698656",
-        "line": 7,
-        "version": 290,
-        "index": 185
+        "line": 10,
+        "version": 296,
+        "index": 221
       }
     ],
     "templates/maze.html": [
       {
         "id": "39464248-cf3c-468a-b234-b9e7df3cd893",
         "line": 1,
-        "version": 123,
+        "version": 127,
         "index": 0
       },
       {
         "id": "973af655-8014-479d-860d-9b50d79f5350",
         "line": 20,
-        "version": 123,
+        "version": 127,
         "index": 496
+      }
+    ],
+    "templates/signup.html": [
+      {
+        "id": "a9d8aa5d-7a13-4d38-94b2-31b894b6d7a2",
+        "line": 397,
+        "version": 2552,
+        "index": 19024
       }
     ]
   }

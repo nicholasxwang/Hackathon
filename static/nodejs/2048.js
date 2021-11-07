@@ -27,17 +27,21 @@ window.addEventListener('load', function() {
             var y2 = y;
             while (y2 > 0 && numbers[x][y2] > 0 && (numbers[x][y2-1] == 0 || numbers[x][y2-1] == numbers[x][y2])) {
               valid = true;
-              if (numbers[x][y2-1] == numbers[x][y2]) // merge
-                numbers[x][y2-1] *= 2;
-              else
-                numbers[x][y2-1] = numbers[x][y2];
-
-              numbers[x][y2] = 0;
-
+              if (numbers[x][y2-1] == numbers[x][y2]) {
+                copy[x][y2-1] *= 2; 
+                copy[x][y2] = 0;
+              } else {
+                copy[x][y2-1] = copy[x][y2];
+                copy[x][y2] = 0;
+                numbers = JSON.parse(JSON.stringify(copy));
+              }
+              
               y2--;
             }
           }
         }
+
+        numbers = JSON.parse(JSON.stringify(copy));
 
         if (valid)
           generateNewNum();
@@ -54,7 +58,7 @@ window.addEventListener('load', function() {
                 copy[x][y2] = 0;
               } else {
                 copy[x][y2+1] = copy[x][y2];
-              copy[x][y2] = 0;
+                copy[x][y2] = 0;
                 numbers = JSON.parse(JSON.stringify(copy));
               }
 
@@ -85,6 +89,8 @@ window.addEventListener('load', function() {
             }
           }
 
+          numbers = JSON.parse(JSON.stringify(copy));
+
           if (valid)
             generateNewNum();
           break;
@@ -105,6 +111,8 @@ window.addEventListener('load', function() {
               }
             }
           }
+
+          numbers = JSON.parse(JSON.stringify(copy));
 
           if (valid)
             generateNewNum();

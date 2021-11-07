@@ -67,7 +67,12 @@ function controls(){
   }
   allow = moveTo(upx,upy);
   if(allow == 1){
-    draw(ux,uy,)
+    draw(ux,uy,"#FF0000");
+    position_x = upx;
+    position_y = upy;
+  }else if(allow == 2){
+    updateRect(0, 0, canvas.width, canvas.height);
+    ctxt.font("70px Helvetica");
   }
 }
 

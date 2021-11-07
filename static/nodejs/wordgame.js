@@ -11,7 +11,7 @@ function check() {
   var userInput = document.getElementById("input").value.toLowerCase();
   if (userInput == word)
   {
-  	document.getElementById("ansCheck").innerHTML = "Correct.";
+  	document.getElementById("ansCheck").innerHTML = "Correct!";
   }
   else
   {

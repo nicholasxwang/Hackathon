@@ -52,11 +52,22 @@ def checkBetaCode():
   return "False"
 @app.route("/sendEmail")
 def sendEmail():
-  msg = Message("hi Testing", sender = "virtualholidaysmidnighthacks@gmail.com", recipients = ["nicholas.x.wang@gmail.com"])
-  msg.html = "Testing 123"
-  #return str(msg)
-  mail.send(msg)
-  return "Sent"
+  import smtplib, ssl
+  port = 465  # For SSL
+  smtp_server = "smtp.gmail.com"
+  sender_email = os.getenv("email")  # Enter your address
+  receiver_email = "nicholas.x.wang@gmail.com" # Enter receiver address
+  password = os.getenv("password") 
+  message = """\
+  Subject: Hi there
+
+  This message is sent from Python."""
+
+  context = ssl.create_default_context()
+  with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message)
+  return "yay"
 @app.route('/')
 def index():
   return render_template("index.html")

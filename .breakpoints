@@ -1,10 +1,18 @@
 {
   "files": {
+    "static/nodejs/2048.js": [
+      {
+        "id": "f5d16dc9-2920-4880-933e-93c91da8a949",
+        "line": 28,
+        "version": 1343,
+        "index": 542
+      }
+    ],
     "templates/maze.html": [
       {
         "id": "39464248-cf3c-468a-b234-b9e7df3cd893",
         "line": 5,
-        "version": 34,
+        "version": 39,
         "index": 125
       }
     ]

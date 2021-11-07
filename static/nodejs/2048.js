@@ -1,7 +1,7 @@
 var canvas;
 var context;
 var numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-alert(numbers)
+alert(numbers);
 
 alert("starting");
 
@@ -17,25 +17,17 @@ window.onload = function() {
 };
 
 window.addEventListener('load', function() {
-  alert("step 1");
-  canvas = document.createElement("CANVAS");
-  alert("step 2");
-  context = canvas.getContext("2d")
-  alert("step 3");
+  canvas = document.getElementById("canvas");
+  context = canvas.getContext("2d");
   document.body.appendChild(canvas);
-  alert("step 4");
-
-  draw();
-  alert("step 5");
+  draw(context);
   generateStartingTiles();
-  alert("step 6");
 });
 
-function draw() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.font = "50px Arial serif";
-  context.fillStyle = "white";
-  context.fillText("asdfadsfadsfasdf", 200, 200);
+function draw(ctx) {
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#FF0000";
+  ctx.fillRect(0,0,150,75);
 }
 
 function generateStartingTiles() 
@@ -53,6 +45,5 @@ function generateStartingTiles()
   
   var num = Math.random() < 0.15 ? 4 : 2;
   numbers[x][y] = num;
-  alert(num+" • "+x+" • "+y+" • "+x2+" • "+y2);
   numbers[x2][y2] = 2;
 }

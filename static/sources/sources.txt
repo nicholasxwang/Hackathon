@@ -5,6 +5,8 @@ https://www.mongodb.com/blog/post/getting-started-with-mongodb-and-java-part-i
 https://www.technicalkeeda.com/html-tutorials/all-countries-drop-down-list-in-html
 https://stackoverflow.com/questions/3047056/what-do-the-crossed-style-properties-in-google-chrome-devtools-mean?rq=1
 https://codingislove.com/css-speech-bubbles/
+https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-element/
+https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 
 //Kousthubh
 https://www.codeproject.com/Articles/577080/Create-an-HTML5-and-JavaScript-Maze-Game-with-a-Ti

@@ -7,9 +7,9 @@
   <script src="/static/nodejs/signup.js"></script>
   <form method="POST">
   
-  <h1>Sign Up!</h1>
+  <h1>Sign Up!</h1><div id="bubble"  style="display:none;" class="valid sb1">Message: Valid Email</div><div id="bubble2"  style="display:none;" class="valid2 sb2">Message: Invalid Email</div>
   <span class="label" >Email:</span><br>
-  <input type="email" name="email" id="email"><div class="valid sb1">Valid Email</div>
+  <input type="email" name="email" id="email"><br>
 
   
   <span class="label" >Username:</span><br>
@@ -27,6 +27,9 @@
   
   <span class="label">Country:</span><br>
   <select id="country" name="country">
+    <option value="none" selected disabled hidden>
+          Select a Country
+      </option>
    <option value="Afganistan">Afghanistan</option>
    <option value="Albania">Albania</option>
    <option value="Algeria">Algeria</option>
@@ -275,7 +278,7 @@
    <option value="Zimbabwe">Zimbabwe</option>
   </select><br>
 
-  <input type="submit" value="Sign Up!">
+  <input type="submit" value="Sign Up!" disabled>
   <a href="/"><button>Back</button></a>
 </body>
 {% endblock %}

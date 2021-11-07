@@ -21,7 +21,7 @@ def login2():
   import pymongo
   from werkzeug.security import generate_password_hash, check_password_hash
   db =pymongo.MongoClient(os.environ['token']).Users.Users
-  for i in db:
+  for i in db.find({}):
     if request.form.get("u")==i["username"] and check_password_hash(i["password"],request.form.get("p"))==True:
       resp = make_response(redirect("/dashboard"))
       resp.set_cookie("u", request.form.get("u"))
@@ -138,10 +138,8 @@ def dashboard():
       except:
         candy_num = 0;
       zip_code = i["zip"]
-  # for i in db:
-  #   if i["zip"] == zip_code:
-  #     #
-  # return render_template('dashboard.html', name = name, candy_num, houses)
+  return str(name)
+  return render_template('dashboard.html', name = name, candy_num=candy_num, zip=zip, place=ZipCodeDatabase()[int(zip)].place,state =ZipCodeDatabase()[int(zip)].state)
 
 @app.route("/2048")
 def game2048():

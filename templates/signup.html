@@ -8,15 +8,15 @@
   <form method="POST">
   
   <h1>Sign Up!</h1><div id="bubble"  style="display:none;" class="valid sb1">Message: Valid Email</div><div id="bubble2"  style="display:none;" class="valid2 sb2">Message: Invalid Email</div>
-  <span class="label" >Email: <span id="emailValid" style="display:none;">✅</span></span><br>
-  <input type="email" onkeyup="changeEmail()" name="email" id="email"><br>
+  <span class="label" >Email:</span><br>
+  <span id="emailValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><input type="email" onkeyup="changeEmail()" name="email" id="email"><br>
 
   
   <span class="label" >Username:</span><br>
   <input type="text" name="username" id="username"><br>
   
   <span class="label">Password:</span><br>
-  <input type="password" id="password"><br>
+  <span id="passwordValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><input onkeyup="checkPassword"  type="password" id="password"><br>
   
   <span class="label">Zip Code:</span><br>
   <input type="number" id="zipcode"><br>
@@ -308,6 +308,33 @@ function changeEmail() {
       document.getElementById("bubble").style.display="none";
       document.getElementById("bubble2").value = "Message: Invalid Email!";
       document.getElementById("emailValid").style.display="none";
+    }
+  };
+  function checkPassword(){
+var value = document.getElementById("password").value;
+    if (value.length<6){
+      ("bubble2").style.display="block";
+      document.getElementById("bubble").style.display="none";
+      document.getElementById("bubble2").value = "Message: Password must be at least 6 characters long";
+      document.getElementById("passwordValid").style.display="none";
+    }else if (value.inclues("1") ||value.inclues("2") || value.inclues("3") || value.inclues("3") || value.inclues("4") || value.inclues("5") || value.inclues("6") || value.inclues("7") || value.inclues("8") || value.inclues("9") || value.inclues("0")){
+      ("bubble2").style.display="block";
+      document.getElementById("bubble").style.display="none";
+      document.getElementById("bubble2").value = "Message: Password must include at least 1 number";
+      document.getElementById("passwordValid").style.display="none";
+    }
+    }else if (value.inclues("!") ||value.inclues(" ") || value.inclues("#") || value.inclues('"') || value.inclues("'") || value.inclues("$") || value.inclues("%") || value.inclues("&") || value.inclues("(") || value.inclues(")") || value.inclues("*") || value.inclues("+") || value.inclues(",") || value.inclues(".") || value.inclues("-") || value.inclues("/") || value.inclues(":") ||value.inclues("=") || value.inclues("<") || value.inclues(">") || value.inclues(";") || value.inclues("@") || value.inclues("?") || value.inclues("[") || value.inclues("]") || value.inclues("^") || value.inclues("`") || value.inclues("|") || 
+    value.inclues("{") ||value.inclues("}") ){
+      ("bubble2").style.display="block";
+      document.getElementById("bubble").style.display="none";
+      document.getElementById("bubble2").value = "Message: Password must include at least 1 special character";
+      document.getElementById("passwordValid").style.display="none";
+    }else{
+      document.getElementById("bubble").style.display="block";
+      document.getElementById("bubble2").style.display="none";
+      document.getElementById("bubble").value = "Message: Valid Password!";
+      document.getElementById("passwordValid").style.display="block";
+      document.getElementById
     }
   };
   </script>

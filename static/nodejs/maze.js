@@ -69,6 +69,9 @@ function moveRect(keyPress){
   }
   moveAllow = canMoveTo(postX, postY);
   if (moveAllow === 1){
-    
+    drawRect(newX, newY, "#0000FF");
+    rectangleX = postX;
+    rectangleY = postY;
   }
+  
 }

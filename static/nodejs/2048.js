@@ -7,6 +7,7 @@ window.onload = function(){
   var downArrow = 40;
   var rightArrow = 39;
   var leftArrow = 37;
+  
 
   window.onkeypress = function(key) {
     if (key.keyCode == upArrow)

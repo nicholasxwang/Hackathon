@@ -1,4 +1,4 @@
-window.addEventListener("load"), function() {
+window.addEventListener("load", function() {
   var canvas = document.getElementById("canvas");
   var context = canvas.getContext("2d");
   var rectangleX = 425;
@@ -19,7 +19,7 @@ window.addEventListener("load"), function() {
           context.fillStyle = '#00FF00';
           context.fill();
     };
-    photo.src = "/static/images/maze.png";
+    photo.src = "/static/images/maze.gif";
 
   }
   function drawRect(dx,dy,style){
@@ -81,7 +81,7 @@ window.addEventListener("load"), function() {
           context.fillStyle = "Black";
           context.textAlign = "center";
           context.textBaseline = "middle";
-          context.fillText("Congratulations!", canvas.width / 2, canvas.height / 2);
+          context.fillText("You got 1 piece of Candy!", canvas.width / 2, canvas.height / 2);
           window.removeEventListener("keydown", moveRect, true);
     }
   }
@@ -106,4 +106,4 @@ window.addEventListener("load"), function() {
       }
       return canMove;
   }
-);
+});

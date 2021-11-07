@@ -1,5 +1,5 @@
 //test code to see if java worked, but we ended up using python for database connections
-
+/*
 package com.mongodb.quickstart;
 
 import com.mongodb.client.MongoClient;
@@ -60,4 +60,4 @@ public class main {
             System.out.println(newVersion.toJson(prettyPrint));
         }
     }
-}
+}*/

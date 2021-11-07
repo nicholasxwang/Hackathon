@@ -1,3 +1,3 @@
-function buildMaze(x,y){
-  var cell = x*y;
-}
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+function 

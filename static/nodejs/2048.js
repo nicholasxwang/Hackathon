@@ -62,13 +62,13 @@ window.addEventListener('load', function() {
 
         case rightArrow:
           for (var y = 0; y < 4; y++) {
-            for (var x = 1; x < 4; x++) {
+            for (var x = 3; x >= 0; x--) {
               var x2 = x;
-              while (x2 > 0 && numbers[x2][y] > 0 && numbers[x2-1][y] == 0) {
-                numbers[x2-1][y] = numbers[x2][y];
+              while (x2 < 3 && numbers[x2][y] > 0 && numbers[x2+1][y] == 0) {
+                numbers[x2+1][y] = numbers[x2][y];
                 numbers[x2][y] = 0;
 
-                x2--;
+                x2++;
               }
             }
           }

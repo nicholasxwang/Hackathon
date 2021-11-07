@@ -123,22 +123,22 @@ def signup():
 
 @app.route("/dashboard")
 def dashboard():
-  return render_template("dashboard.html")
+  #return render_template("dashboard.html")
   u = request.cookies.get("u")
   if u == None:
     return redirect("/login")
   import pymongo
   from werkzeug.security import generate_password_hash, check_password_hash
   db =pymongo.MongoClient(os.environ['token']).Users.Users
-  for i in db:
-    if i["u"] == u:
-      name = i
+  for i in db.find({}):
+    if i["username"] == u:
+      name = i["name"]
       try:
         candy_num = int(i["candy_num"])
       except:
         candy_num = 0;
-      zip_code = i["zip"]
-  return str(name)
+      zip= i["zip"]
+  #return str(name)
   return render_template('dashboard.html', name = name, candy_num=candy_num, zip=zip, place=ZipCodeDatabase()[int(zip)].place,state =ZipCodeDatabase()[int(zip)].state)
 
 @app.route("/2048")

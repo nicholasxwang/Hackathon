@@ -280,147 +280,144 @@
 
   <input type="submit" value="Sign Up!"  onclick="SubmitCheck()">
   <a href="/"><button>Back</button></a>
-  <!--<script src="/static/nodejs/signup.js"></script>!-->
   <script>
-    
-function validateEmail(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-}
+  function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
 
-function validate(email) {
+  function validate(email) {
 
-  if (validateEmail(email)) {
-    return true;
-  } else {
-    return false;
-  };
-};
-function changeEmail() {
-    var value = document.getElementById("email").value;
-    if (validate(value)){
-      document.getElementById("bubble").style.display="block";
-      document.getElementById("bubble2").style.display="none";
-      document.getElementById("bubble").innerHTML = "Message: Valid Email!";
-      document.getElementById("emailValid").style.display="block";
-    }else{
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: Invalid Email!";
-      document.getElementById("emailValid").style.display="none";
-    }
-  };
-function checkPassword(){
-var value = document.getElementById("password").value;
-    if (value.length<6){
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: Password must be at least 6 characters long";
-      document.getElementById("passwordValid").style.display="none";
-    }else if (!value.includes("1") &&!value.includes("2") && !value.includes("3") && !value.includes("3") && !value.includes("4") && !value.includes("5") && !value.includes("6") && !value.includes("7") && !value.includes("8") && !value.includes("9") && !value.includes("0")){
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: Password must include at least 1 number";
-      document.getElementById("passwordValid").style.display="none";
-    }else if (!value.includes("!") &&!value.includes(" ") && !value.includes("#") && !value.includes('"') && !value.includes("'") && !value.includes("$") && !value.includes("%") && !value.includes("&") && !value.includes("(") && !value.includes(")") && !value.includes("*") && !value.includes("+") && !value.includes(",") && !value.includes(".") && !value.includes("-") && !value.includes("/") && !value.includes(":") &&!value.includes("=") && !value.includes("<") && !value.includes(">") && !value.includes(";") && !value.includes("@") && !value.includes("?") && !value.includes("[") && !value.includes("]") && !value.includes("^") && !value.includes("`") && !value.includes("|") && 
-    !value.includes("{") &&!value.includes("}") ){
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: Password must include at least 1 special character";
-      document.getElementById("passwordValid").style.display="none";
-    }else{
-      document.getElementById("bubble").style.display="block";
-      document.getElementById("bubble2").style.display="none";
-      document.getElementById("bubble").innerHTML = "Message: Valid Password!";
-      document.getElementById("passwordValid").style.display="block";
-      document.getElementById
-    }
-  };
-  
-  function checkBetaCode() {
-    
-    var value = document.getElementById("beta").value;
-    var request =  $.ajax({
-      type: "POST",
-      url: "/checkBetaCode",
-      data: {
-        "code":document.getElementById("beta").value
-      }
-    });
-    request.done(function(data){
-      if (data=="True"){
-        document.getElementById("bubble").style.display="block";
-        document.getElementById("bubble2").style.display="none";
-        document.getElementById("bubble").innerHTML = "Message: Valid Beta Code!";
-        document.getElementById("betaValid").style.display="block";
-    }else if (data=="Taken"){
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: This beta code has been taken!";
-      document.getElementById("betaValid").style.display="none";
-    }else{
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: Invalid Beta Code!";
-      document.getElementById("betaValid").style.display="none";
-    }
-    });
-    
-  };
-
-  function checkZIPCode() {
-    
-    var value = document.getElementById("zipcode").value;
-    var request =  $.ajax({
-      type: "POST",
-      url: "/checkValidZipCode",
-      data: {
-        "code":document.getElementById("zipcode").value
-      }
-    });
-    request.done(function(data){
-      if (data=="True"){
-        document.getElementById("bubble").style.display="block";
-        document.getElementById("bubble2").style.display="none";
-        document.getElementById("bubble").innerHTML = "Message: Valid Zip Code!";
-        document.getElementById("zipValid").style.display="block";
-    }else{
-      document.getElementById("bubble2").style.display="block";
-      document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").innerHTML = "Message: Invalid Zip Code!";
-      document.getElementById("zipValid").style.display="none";
-    }
-    });
-    
-  };
-  function SubmitCheck(){
-    if (document.getElementById("emailValid").style.display=="block"&&document.getElementById("passwordValid").style.display=="block"&&document.getElementById("betaValid").style.display=="block"&&document.getElementById("zipValid").style.display=="block"&&document.getElementById("username").value.length>0){
-      alert("Would you like to submit? Click 'OK' if you want to!")
-       var request =  $.ajax({
-      type: "POST",
-      url: "/signUp,
-      data: {
-        "username":document.getElementById("username").value,
-        "password":document.getElementById("password").value,
-        "zip_code":document.getElementById("zipcode").value,
-        "email":document.getElementById("email").value
-         "beta_code":document.getElementById("beta").value
-      }
-      });
-      request.done(function(data){
-        if ("Success" == data){
-          alert("Success!");
-          window.location.href = "/login";
-        }
-        else{
-          alert("Error: "+data);
-        }
-      });
-    }else{
-      alert("You can't submit yet...Please fill all questions in this form!")
+    if (validateEmail(email)) {
+      return true;
+    } else {
+      return false;
     }
   }
+  function changeEmail() {
+      var value = document.getElementById("email").value;
+      if (validate(value)){
+        document.getElementById("bubble").style.display="block";
+        document.getElementById("bubble2").style.display="none";
+        document.getElementById("bubble").innerHTML = "Message: Valid Email!";
+        document.getElementById("emailValid").style.display="block";
+      }else{
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: Invalid Email!";
+        document.getElementById("emailValid").style.display="none";
+      }
+    }
+  function checkPassword(){
+  var value = document.getElementById("password").value;
+      if (value.length<6){
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: Password must be at least 6 characters long";
+        document.getElementById("passwordValid").style.display="none";
+      }else if (!value.includes("1") &&!value.includes("2") && !value.includes("3") && !value.includes("3") && !value.includes("4") && !value.includes("5") && !value.includes("6") && !value.includes("7") && !value.includes("8") && !value.includes("9") && !value.includes("0")){
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: Password must include at least 1 number";
+        document.getElementById("passwordValid").style.display="none";
+      }else if (!value.includes("!") &&!value.includes(" ") && !value.includes("#") && !value.includes('"') && !value.includes("'") && !value.includes("$") && !value.includes("%") && !value.includes("&") && !value.includes("(") && !value.includes(")") && !value.includes("*") && !value.includes("+") && !value.includes(",") && !value.includes(".") && !value.includes("-") && !value.includes("/") && !value.includes(":") &&!value.includes("=") && !value.includes("<") && !value.includes(">") && !value.includes(";") && !value.includes("@") && !value.includes("?") && !value.includes("[") && !value.includes("]") && !value.includes("^") && !value.includes("`") && !value.includes("|") && 
+      !value.includes("{") &&!value.includes("}") ){
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: Password must include at least 1 special character";
+        document.getElementById("passwordValid").style.display="none";
+      }else{
+        document.getElementById("bubble").style.display="block";
+        document.getElementById("bubble2").style.display="none";
+        document.getElementById("bubble").innerHTML = "Message: Valid Password!";
+        document.getElementById("passwordValid").style.display="block";
+  
+      }
+    }
+    
+    function checkBetaCode() {
+      var request =  $.ajax({
+        type: "POST",
+        url: "/checkBetaCode",
+        data: {
+          "code":document.getElementById("beta").value
+        }
+      });
+      request.done(function(data){
+        if (data=="True"){
+          document.getElementById("bubble").style.display="block";
+          document.getElementById("bubble2").style.display="none";
+          document.getElementById("bubble").innerHTML = "Message: Valid Beta Code!";
+          document.getElementById("betaValid").style.display="block";
+      }else if (data=="Taken"){
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: This beta code has been taken!";
+        document.getElementById("betaValid").style.display="none";
+      }else{
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: Invalid Beta Code!";
+        document.getElementById("betaValid").style.display="none";
+      }
+      });
+      
+    }
+
+    function checkZIPCode() {
+    
+      var request =  $.ajax({
+        type: "POST",
+        url: "/checkValidZipCode",
+        data: {
+          "code":document.getElementById("zipcode").value
+        }
+      });
+      request.done(function(data){
+        if (data=="True"){
+          document.getElementById("bubble").style.display="block";
+          document.getElementById("bubble2").style.display="none";
+          document.getElementById("bubble").innerHTML = "Message: Valid Zip Code!";
+          document.getElementById("zipValid").style.display="block";
+      }else{
+        document.getElementById("bubble2").style.display="block";
+        document.getElementById("bubble").style.display="none";
+        document.getElementById("bubble2").innerHTML = "Message: Invalid Zip Code!";
+        document.getElementById("zipValid").style.display="none";
+      }
+      });
+      
+    }
+    function SubmitCheck(){
+      if (document.getElementById("emailValid").style.display=="block"&&document.getElementById("passwordValid").style.display=="block"&&document.getElementById("betaValid").style.display=="block"&&document.getElementById("zipValid").style.display=="block"&&document.getElementById("username").value.length>0){
+        alert("Would you like to submit? Click 'OK' if you want to!");
+        var request =  $.ajax({
+        type: "POST",
+        url: "/signUp",
+        data: {
+          "username":document.getElementById("username").value,
+          "password":document.getElementById("password").value,
+          "zip_code":document.getElementById("zipcode").value,
+          "email":document.getElementById("email").value,
+          "beta_code":document.getElementById("beta").value
+        }
+        });
+        request.done(function(data){
+          if ("Success" == data){
+            alert("Success!");
+            window.location.href = "/login";
+          }
+          else{
+            alert("Error: "+data);
+          }
+        });
+      }else{
+        alert("You can't submit yet...Please fill all questions in this form!");
+      }
+    }
   </script>
+    
+
 </body>
 
 {% endblock %}

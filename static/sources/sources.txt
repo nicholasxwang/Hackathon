@@ -9,3 +9,5 @@ https://stackoverflow.com/questions/3047056/what-do-the-crossed-style-properties
 https://www.codeproject.com/Articles/577080/Create-an-HTML5-and-JavaScript-Maze-Game-with-a-Ti
 
 https://www.mongodb.com/developer/quickstart/java-setup-crud-operations/?utm_campaign=javainsertingdocuments&utm_source=facebook&utm_medium=organic_social
+
+https://www.edureka.co/blog/dynamic-web-pages-in-java/

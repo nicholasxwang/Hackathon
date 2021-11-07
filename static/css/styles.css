@@ -1,8 +1,12 @@
 /*Default*/
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
 body {
-  background-color: #6E2C00;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.525), rgba(0, 0, 0, 0.5)), url("/static/images/bkg.jpg") !important;
+  background: no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   color: white;
   font-family: 'Lato', sans-serif;
 }
@@ -10,9 +14,9 @@ body {
 h1 {
   text-align: center;
 }
-button{
+/* button{
   color:
-}
+} */
 
 /*Specific IDs*/
 

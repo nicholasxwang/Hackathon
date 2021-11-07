@@ -3,5 +3,6 @@ https://www.mongodb.com/blog/post/getting-started-with-mongodb-and-java-part-i
 
 //Nicholas
 https://www.technicalkeeda.com/html-tutorials/all-countries-drop-down-list-in-html
+https://stackoverflow.com/questions/3047056/what-do-the-crossed-style-properties-in-google-chrome-devtools-mean?rq=1
 
 //Kousthubh

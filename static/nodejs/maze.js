@@ -67,6 +67,8 @@ function moveRect(keyPress){
         break;
     default: return;
   }
-  movingAllowed = canMoveTo(postX, postY);
-  
+  moveAllow = canMoveTo(postX, postY);
+  if (moveAllow === 1){
+    
+  }
 }

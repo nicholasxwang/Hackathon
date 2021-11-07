@@ -3,10 +3,12 @@ canvas.innerHTML = "This browser does not support canvas or JavaScript.";
 var context = canvas.getContext("2d");
 
 window.onload = function(){  
-  var 
+  var upArrow = 38;
+  var downArrow = 40;
+  var rightArrow = 39;
+  var leftArrow = 37;
 
-  window.onkeydown = function(key){
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillText(key.keyCode);
+  window.onkeypress = function(key) {
+    if (key.keyCode == upArrow)
   };
 };    

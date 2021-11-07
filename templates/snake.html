@@ -1,13 +1,7 @@
-<HTML>
-
-<HEAD>
-	My game applet
-</HEAD>
-
-<BODY>
-	<div>
-		<APPLET CODE="/static/java/snake2.java" WIDTH="800" HEIGHT="500"></APPLET>
-	</div>
-</BODY>
-
-</HTML>
+<html>
+<head>
+<title>run my python files</title>
+<?PHP
+echo shell_exec("java static/java/snake.java");
+?>
+</head>

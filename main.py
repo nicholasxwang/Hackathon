@@ -152,4 +152,7 @@ def game_maze():
 @app.route("/snake")
 def snake_game():
   return render_template("snake.html")
+@app.route("/tictactoe")
+def tictactoe
 app.run(host='0.0.0.0', port=8080)
+

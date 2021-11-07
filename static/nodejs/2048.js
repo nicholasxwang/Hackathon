@@ -19,13 +19,12 @@ window.addEventListener('load', function() {
     keys.innerHTML = key.code;
     switch (key.keyCode) {
       case upArrow:
-        for (var x = 0; x < 4; x++) {
-          for (var y = 1; y < 4; y++) {
-            x2 = x;
-            y2 = y;
-            while (y2 > 0 && numbers[x2][y2] > 0 && numbers[x2][y2-1] == 0) {
-              numbers[x2][y2-1] = numbers[x2][y2];
-              numbers[x2][y2] = 0;
+        for (var y = 1; y < 4; y++) {
+          for (var x = 0; x < 4; x++) {
+            var y2 = y;
+            while (y2 > 0 && numbers[x][y2] > 0 && numbers[x][y2-1] == 0) {
+              numbers[x][y2-1] = numbers[x][y2];
+              numbers[x][y2] = 0;
 
               y2--;
             }
@@ -34,13 +33,12 @@ window.addEventListener('load', function() {
         break;
 
       case downArrow:
-        for (var x = 0; x < 4; x++) {
-          for (var y = 3; y > 0; y++) {
-            x2 = x;
+        for (var y = 4; y >= 0; y--) {
+          for (var x = 0; x <= 4; x++) {
             y2 = y;
-            while (y2 > 0 && numbers[x2][y2] > 0 && numbers[x2][y2-1] == 0) {
-              numbers[x2][y2+1] = numbers[x2][y2];
-              numbers[x2][y2] = 0;
+            while (y2 < 3 && numbers[x][y2] > 0 && numbers[x][y2+1] == 0) {
+              numbers[x][y2+1] = numbers[x][y2];
+              numbers[x][y2] = 0;
 
               y2++;
             }
@@ -58,26 +56,27 @@ window.addEventListener('load', function() {
 
 function draw() {
   context.font = "50px Verdana serif";
+  context.clearRect(0, 0, canvas.width, canvas.height);
   
   for (var x = 0; x < 4; x++) {
     for (var y = 0; y < 4; y++) {
       switch (numbers[x][y]) {
         case 0:
-         context.fillStyle = "#F39C12";
+         context.fillStyle = "rgba(243, 156, 18,0.3)";
          context.fillRect(x*150, y*150, 148, 148);
-         context.fillStyle = "rgb(255, 255, 255)";
+         context.fillStyle = "rgb(256,256,256)";
          break;
         
         case 2:
-          context.fillStyle = "rgb(200, 200, 200)";
+          context.fillStyle = "rgba(200, 200, 200,0.3)";
           context.fillRect(x*150, y*150, 148, 148);
-          context.fillStyle = "rgb(0, 0, 0)";
+          context.fillStyle = "rgb(256,256,256)";
           break;
 
         case 4:
-         context.fillStyle = "rgb(150, 150, 150)";
+         context.fillStyle = "rgba(150, 150, 150,0.3)";
          context.fillRect(x*150, y*150, 148, 148);
-         context.fillStyle = "rgb(0, 0, 0)";
+         context.fillStyle = "rgb(256,256,256)";
          break;
       }
 

@@ -17,9 +17,9 @@ zcdb = ZipCodeDatabase()
 def checkzipcode():
   try:
     a = zcdb[int(request.form.get("code"))]
-    return True
+    return "True"
   except:
-    return False
+    return "False"
 @app.route("/checkBetaCode", methods=["POST"])
 def checkBetaCode():
   with open("static/json/beta_codes.json","r") as file:

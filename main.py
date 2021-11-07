@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 import os
+import json
 app = Flask('app')
 mail = Mail(app)
 app.config['MAIL_SERVER']='smtp.mail.com'
@@ -10,6 +11,14 @@ app.config['MAIL_PASSWORD'] = os.getenv("password")
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
+@app.route("/checkBetaCode", methods=["POST"])
+def checkBetaCode():
+  with open("beta_codes.json","w") as file:
+    file = json.load(file)
+  code = request.form.get("code")
+  if code in file:
+    return "True"
+  return "False"
 @app.route("/sendEmail")
 def sendEmail():
   e = request.args.get("e")

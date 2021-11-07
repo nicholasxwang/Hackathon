@@ -1,3 +1,4 @@
+
 {% extends "layout.html" %}
 {% block main %}
 <head>
@@ -22,7 +23,7 @@
   <input type="number" id="zipcode"><br>
   
   <span class="label" >Beta Code</span><br>
-  <input type="text" name="code" id="username"><br>
+  <span id="betaValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><<input type="text" name="code" id="beta"><br>
   
   
   <span class="label">Country:</span><br>
@@ -335,6 +336,31 @@ var value = document.getElementById("password").value;
       document.getElementById("passwordValid").style.display="block";
       document.getElementById
     }
+  };
+  
+  function checkBetaCode() {
+    var value = document.getElementById("email").value;
+    var request =  $.ajax({
+      type: "POST",
+      url: "/checkBetaCode",
+      data: {
+        "code":document.getElementById("beta").value
+      }
+    });
+    request.done(function(data){
+        if (data=="True")){
+      document.getElementById("bubble").style.display="block";
+      document.getElementById("bubble2").style.display="none";
+      document.getElementById("bubble").innerHTML = "Message: Valid Beta Code!";
+      document.getElementById("betaValid").style.display="block";
+    }else{
+      document.getElementById("bubble2").style.display="block";
+      document.getElementById("bubble").style.display="none";
+      document.getElementById("bubble2").innerHTML = "Message: Invalid Beta Code!";
+      document.getElementById("betaValid").style.display="none";
+    }
+    });
+    
   };
   </script>
 </body>

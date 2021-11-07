@@ -4,10 +4,10 @@ import os
 import json
 app = Flask('app')
 mail = Mail(app)
-app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = os.getenv("email")
-app.config['MAIL_PASSWORD'] = os.getenv("password")
+app.config['MAIL_USERNAME'] = 'virtualholidaysmidnighthacks@gmail.com'
+app.config['MAIL_PASSWORD'] = os.getenv('psw')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 from pyzipcode import ZipCodeDatabase
@@ -50,11 +50,9 @@ def checkBetaCode():
   return "False"
 @app.route("/sendEmail")
 def sendEmail():
-  e = request.args.get("e")
-  t = request.args.get("t")
-  b = request.args.get("b")
-  msg = Message(t, sender = os.getenv("email"), recipients = [e])
-  msg.body = b
+  msg = Message("hi Testing", sender = "virtualholidaysmidnighthacks@gmail.com", recipients = ["nicholas.x.wang@gmail.com"])
+  msg.html = "Testing 123"
+  #return str(msg)
   mail.send(msg)
   return "Sent"
 @app.route('/')

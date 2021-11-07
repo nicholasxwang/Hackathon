@@ -6,7 +6,7 @@ var size_x = 556;
 var size_y = 556;
 function build(x,y){
   var maze = new Image();
-  makeWhite(0, 0, canvas.width, canvas.height);
+  updateRect(0, 0, canvas.width, canvas.height);
   maze.onload = function(){
     context.drawImage(maze, 0, 0);
     draw(x,y,"#FF0000",false,true);
@@ -20,7 +20,7 @@ function build(x,y){
   maze.src = "maze.gif";
 }
 function draw(x,y,color){
-  makeWhite(position_x, position_y, 15, 15);
+  updateRect(position_x, position_y, 15, 15);
   position_x = x;
   position_y = y;
   ctxt.beginPath();
@@ -30,5 +30,18 @@ function draw(x,y,color){
   ctxt.fill();
 }
 build(425,3);
+function updateRect(x,y,l,h){
+  ctxt.beginPath();
+  ctxt.rect(x,y,l,h);
+  ctxt.closePath();
+  ctxt.fillStyle = "white";
+  ctxt.fill();
+}
+function controls(){
+  var upx;
+  var upy;
+  
+}
+
 
 

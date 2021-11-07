@@ -18,6 +18,7 @@ window.addEventListener('load', function() {
 
   document.addEventListener("keydown", function(key) {
     var valid = false;
+    var copy = numbers.slice();
 
     switch (key.keyCode) {
       case upArrow:
@@ -49,15 +50,17 @@ window.addEventListener('load', function() {
             while (y2 < 4 && numbers[x][y2] > 0 && (numbers[x][y2+1] == 0 || numbers[x][y2+1] == numbers[x][y2])) {
               valid = true;
               if (numbers[x][y2+1] == numbers[x][y2]) // merge
-                numbers[x][y2+1] *= 2;
+                copy[x][y2+1] *= 2;
               else
-                numbers[x][y2+1] = numbers[x][y2];
-              numbers[x][y2] = 0;
+                copy[x][y2+1] = copy[x][y2];
+
+              copy[x][y2] = 0;
 
               y2++;
             }
           }
         }
+        numbers = copy.slice();
 
         if (valid)
           generateNewNum();

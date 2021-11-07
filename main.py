@@ -140,7 +140,20 @@ def dashboard():
         candy_num = 0;
       zip= i["zip"]
   #return str(name)
-  return render_template('dashboard.html', name = name, candy_num=candy_num, zip=zip, place=ZipCodeDatabase()[int(zip)].place,state =ZipCodeDatabase()[int(zip)].state)
+  houses_zip = []
+  houses_state = []
+  houses_country = []
+  for i in db.find({}):
+    if zip == i["zip"]:
+      houses_zip.append(i["name"])
+      continue
+    if ZipCodeDatabase()[int(zip)].state == ZipCodeDatabase()[int(i["zip"])].state:
+      houses_state.append(i["name"])
+      continue
+    if ZipCodeDatabase()[int(zip)].country == ZipCodeDatabase()[int(i["zip"])].country:
+      houses_country.append(i["name"])
+      continue
+  return render_template('dashboard.html', name = name, candy_num=candy_num, zip=zip, place=ZipCodeDatabase()[int(zip)].place,state =ZipCodeDatabase()[int(zip)].state,houses_zip=houses_zip,houses_state=houses_state,houses_country=houses_country)
 
 @app.route("/2048")
 def game2048():

@@ -7,23 +7,29 @@
   <h2 style="float:left;"> {{candy_num}} 🍬</h2>
     <h2 style="float:right;"> {{zip}}, {{place}} ({{state}})</h2>
     <br><br><br><br>
-  
+  {% for i in houses_zip %}
   <div class="house">
-    <h1>Kousthubh</h1><br>
-    <h2>House in the same Zip Code</h2>
+    <h1>{{name}}</h1><br>
+    <h2>House on the same Zip Code</h2>
     <br><br><br>
-  <a href="/maze">  <button>Trick or Treat Here</button></a>
+  <a href={{"/trick/"+name}}>  <button>Trick or Treat Here</button></a>
   </div>
+  {% endfor %}
+  {% for i in houses_state %}
   <div class="house">
-    <h1>Cindy</h1><br>
-    <h2>House in the same Zip Code</h2>
+    <h1>{{name}}</h1><br>
+    <h2>House in the same State</h2>
     <br><br><br>
-      <button>Trick or Treat Here</button>
+  <a href={{"/trick/"+name}}>  <button>Trick or Treat Here</button></a>
   </div>
-   <div class="house">
-    <h1>Timothy</h1><br>
-    <h2>House in the same City</h2>
+  {% endfor %}
+  {% for i in houses_country %}
+  <div class="house">
+    <h1>{{name}}</h1><br>
+    <h2>House in the same Country</h2>
     <br><br><br>
-    <button>Trick or Treat Here</button>
+  <a href={{"/trick/"+name}}>  <button>Trick or Treat Here</button></a>
   </div>
+  {% endfor %}
+
 {% endblock %}

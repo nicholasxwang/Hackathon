@@ -1,17 +1,14 @@
 var canvas;
 var context;
-var 
 var numbers = [0, 0, 0, 0] * 4;
 
 alert("starting")
+
 window.onload = function() {  
   var upArrow = 38;
   var downArrow = 40;
   var rightArrow = 39;
   var leftArrow = 37;
-
-  draw();
-  generateStartingTiles();
 
   window.onkeypress = function(key) {
     
@@ -19,7 +16,18 @@ window.onload = function() {
 };
 
 window.addEventListener('load', function() {
+  alert("step 1");
+  canvas = document.createElement("CANVAS");
+  alert("step 2");
+  context = canvas.getContext("2d")
+  alert("step 3");
   document.body.appendChild(canvas);
+  alert("step 4");
+
+  draw();
+  alert("step 5");
+  generateStartingTiles();
+  alert("step 6");
 });
 
 function draw() {
@@ -29,7 +37,8 @@ function draw() {
   context.fillText(numbers.toString(), 200, 200);
 }
 
-function generateStartingTiles() {
+function generateStartingTiles() 
+{
   var x = Math.floor(Math.random() * 4);
   var y = Math.floor(Math.random() * 4);
 

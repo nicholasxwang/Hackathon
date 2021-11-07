@@ -12,11 +12,11 @@ window.addEventListener("load", function() {
     var photo = new Image();
     photo.onload = function(){
           context.drawImage(photo, 0, 0);
-          drawRect(rx, ry, "#0000FF", false, true);
+          drawRect(rx, ry, "#FFA500", false, true);
           context.beginPath();
           context.arc(542, 122, 7, 0, 2 * Math.PI, false);
           context.closePath();
-          context.fillStyle = '#00FF00';
+          context.fillStyle = '#FFA500';
           context.fill();
     };
     photo.src = "/static/images/maze.gif";

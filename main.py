@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, make_response
 from flask_mail import Mail, Message
 import os
 import json
@@ -16,6 +16,18 @@ app.config["DEBUG"] = True
 mail = Mail(app)
 from pyzipcode import ZipCodeDatabase
 zcdb = ZipCodeDatabase()
+
+@app.route("/login",method=["POST"])
+def login():
+  import pymongo
+  from werkzeug.security import generate_password_hash, check_password_hash
+  db =pymongo.MongoClient(os.environ['token']).Users.Users
+  for i in db:
+    if request.form.get("u")==i["username"] and check_password_hash(i["password"],request.form.get("p"))==True:
+      resp = make_response(redirect("/dashboard"))
+      resp.set_cookie("u", request.form.get("u"))
+      return resp
+
 
 @app.route("/signUp",methods=["POST"])
 def signUp():
@@ -110,9 +122,26 @@ def login():
 def signup():
   return render_template('signup.html')
 
-@app.route("/dashboard")
-def dashboard():
-  return render_template('dashboard.html')
+# @app.route("/dashboard")
+# def dashboard():
+#   u = request.cookies.get("u")
+#   if u == None:
+#     return redirect("/login")
+#   import pymongo
+#   from werkzeug.security import generate_password_hash, check_password_hash
+#   db =pymongo.MongoClient(os.environ['token']).Users.Users
+#   for i in db:
+#     if i["u"] == u:
+#       name = i
+#       try:
+#         candy_num = int(i["candy_num"])
+#       except:
+#         candy_num = 0;
+#       zip_code = i["zip"]
+#   for i in db:
+#     if i["zip"] == zip_code:
+#       #
+#   return render_template('dashboard.html', name = name, candy_num, houses)
 
 @app.route("/2048")
 def game2048():

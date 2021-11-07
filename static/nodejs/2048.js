@@ -1,8 +1,9 @@
 var canvas;
 var context;
-var numbers = [0, 0, 0, 0] * 4;
+var numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+alert(numbers)
 
-alert("starting")
+alert("starting");
 
 window.onload = function() {  
   var upArrow = 38;
@@ -34,7 +35,7 @@ function draw() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.font = "50px Arial serif";
   context.fillStyle = "white";
-  context.fillText(numbers.toString(), 200, 200);
+  context.fillText("asdfadsfadsfasdf", 200, 200);
 }
 
 function generateStartingTiles() 
@@ -44,12 +45,14 @@ function generateStartingTiles()
 
   var x2 = Math.floor(Math.random() * 4);
   var y2 = Math.floor(Math.random() * 4);
+  
   while (x == x2 || y == y2) {
     x2 = Math.floor(Math.random() * 4);
     y2 = Math.floor(Math.random() * 4);
   }
-
+  
   var num = Math.random() < 0.15 ? 4 : 2;
   numbers[x][y] = num;
+  alert(num+" • "+x+" • "+y+" • "+x2+" • "+y2);
   numbers[x2][y2] = 2;
 }

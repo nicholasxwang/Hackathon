@@ -2,7 +2,7 @@
 {% block main %}
 <head>
   <title>Virtual Trick or Treat</title>
-  <script src="/static/nodejs/signup.js"></script>
+  
 </head>
 <body>
   <form method="POST">
@@ -280,5 +280,40 @@
 
   <input type="submit" value="Sign Up!" disabled>
   <a href="/"><button>Back</button></a>
+  <script src="/static/nodejs/signup.js"></script>
+  <script>
+    
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function validate(email) {
+
+  if (validateEmail(email)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+alert("a");
+alert(window.onload);
+alert(document.getElementById('email').value);
+var userInput = document.getElementById('email').value;
+  userInput.onkeyup = function() {
+    alert("a");
+    var value = this.value;
+    if (validate(value)){
+      document.getElementById("bubble").style.display="block";
+      document.getElementById("bubble2").style.display="none";
+      document.getElementById("bubble2").value = "Message: Valid Email!";
+    }else{
+      document.getElementById("bubble2").style.display="block";
+      document.getElementById("bubble").style.display="none";
+      document.getElementById("bubble2").value = "Message: Invalid Email!";
+    }
+  };
+  </script>
 </body>
+
 {% endblock %}

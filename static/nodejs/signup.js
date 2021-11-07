@@ -1,6 +1,6 @@
 
 function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
 
@@ -23,11 +23,11 @@ window.onload = function() {
       if (validate(value)){
         document.getElementById("bubble").style.display="block";
         document.getElementById("bubble2").style.display="none";
-        document.getElementById("bubble2").value = "Message: Valid Email!"
+        document.getElementById("bubble2").value = "Message: Valid Email!";
       }else{
         document.getElementById("bubble2").style.display="block";
         document.getElementById("bubble").style.display="none";
-        document.getElementById("bubble2").value = "Message: Invalid Email!"
+        document.getElementById("bubble2").value = "Message: Invalid Email!";
       }
-}
-}
+   };
+};

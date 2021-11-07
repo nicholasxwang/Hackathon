@@ -26,8 +26,11 @@ function draw() {
   context.fillStyle = "lightgray";
   
   for (var x = 0; x < 4; x++) {
-    for (var y = 0; y < 4; j++) {
+    for (var y = 0; y < 4; y++) {
+      context.fillStyle = "lightgray";
       context.fillRect(x*200, y*200, 200, 200);
+      context.fillStyle = "#fafafafa";
+      context.drawRect(x*200, y*200, 200, 200);
     }
   }
 }

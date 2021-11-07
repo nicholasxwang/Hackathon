@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "templates/maze.html": [
+      {
+        "id": "39464248-cf3c-468a-b234-b9e7df3cd893",
+        "line": 5,
+        "version": 34,
+        "index": 125
+      }
+    ]
+  }
 }

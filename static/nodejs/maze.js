@@ -1,7 +1,7 @@
-var canvas = document.getElementById("maze")
-var context = canva.getContext("2d");
+var canvas = document.getElementById("maze");
+var context = canvas.getContext("2d");
 var rectangleX = 450;
-var rectangleY = 5
+var rectangleY = 5;
 var width = 560;
 var height = 560;
 var interval;
@@ -11,27 +11,27 @@ function createMaze(rx,ry)
   var photo = new Image();
   photo.onload = function(){
         context.drawImage(photo, 0, 0);
-        drawRectangle(rx, ry, "#0000FF", false, true);
+        drawRect(rx, ry, "#0000FF", false, true);
         context.beginPath();
         context.arc(542, 122, 7, 0, 2 * Math.PI, false);
         context.closePath();
         context.fillStyle = '#00FF00';
         context.fill();
   };
-  photo.src("maze.gif")
+  photo.src = "maze.gif";
 
 }
 function drawRect(dx,dy,style){
     makeWhite(rectangleX, rectangleY, 15, 15);
-    rectangleX = x;
-    rectangleY = y;
+    rectangleX = dx;
+    rectangleY = dy;
     context.beginPath();
-    context.rect(x, y, 15, 15);
+    context.rect(dx, dy, 15, 15);
     context.closePath();
     context.fillStyle = style;
     context.fill();
 }
-drawMazeAndRectangle(450, 5);
+createMaze(450, 5);
 function makeWhite(xc,yc,widthh,height){
   context.beginPath();
     context.rect(xc, yc, widthh, height);
@@ -45,8 +45,8 @@ function moveRect(keyPress){
   var canMove;
   keyPress  = keyPress || window.event;
   switch (keyPress.keyCode){
-    case 38;
-    case 87;
+    case 38:
+    case 87:
         postX = rectangleX;
         postY = rectangleY - 3;
         break;
@@ -74,7 +74,7 @@ function moveRect(keyPress){
     rectangleY = postY;
   }
   else if (movingAllowed === 2) {
-        clearInterval(intervalVar);
+        clearInterval(interval);
         makeWhite(0, 0, canvas.width, canvas.height);
         context.font = "40px Raleway";
         context.fillStyle = "blue";
@@ -84,7 +84,7 @@ function moveRect(keyPress){
         window.removeEventListener("keydown", moveRect, true);
   }
 }
-drawMazeAndRectangle(450, 5);                        
+createMaze(450, 5);                        
 window.addEventListener("keydown", moveRect, true);
 function canMoveTo(destinationx,destinationy){
     var imgData = context.getImageData(destinationx, destinationy, 15, 15);

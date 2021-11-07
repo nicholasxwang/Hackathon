@@ -8,7 +8,7 @@ public class snake2 {
 		obj.setVisible(true);
 		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		Gameplay game = new Gameplay();
+		snake game = new snake();
 		obj.add(game);
 	}
 }

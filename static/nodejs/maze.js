@@ -32,9 +32,9 @@ function drawRect(dx,dy,style){
     context.fill();
 }
 drawMazeAndRectangle(450, 5);
-function makeWhite(xc,yc,width,height){
+function makeWhite(xc,yc,widthh,height){
   context.beginPath();
-    context.rect(xc, yc, width, height);
+    context.rect(xc, yc, widthh, height);
     context.closePath();
     context.fillStyle = "white";
     context.fill();
@@ -86,4 +86,24 @@ function moveRect(keyPress){
 }
 drawMazeAndRectangle(450, 5);                        
 window.addEventListener("keydown", moveRect, true);
+function canMoveTo(destinationx,destinationy){
+    var imgData = context.getImageData(destinationx, destinationy, 15, 15);
+    var data = imgData.data;
+    var canMove = 1;
+    if (destinationX >= 0 && destinationX <= width - 15 && destY >= 0 && destY <= height - 15) { 
+      for(var i = 0; i<900; i+=4){
+        if(data[i] === 0 && data[i+1] === 0 &&  data[i+2] === 0){
+          canMove=0;
+          break;
+        }else if(data[i] === 0 && data[i + 1] === 255 && data[i + 2] === 0){
+          canMove = 2;
+          break;
+        }
+      }
+    }else{
+      canMove = 0;
+    }
+    return canMove;
+}
+
 

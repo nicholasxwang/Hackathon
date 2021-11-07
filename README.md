@@ -1,4 +1,4 @@
-##Our Problem
+## Our Problem
 - The COVID-19 Pandemic has made it unsafe for people to go outside and celebrate holidays that involve gathering with others, such as Halloween. During this year, very few kids enjoyed Halloween due to the safety reasons preventing kids going out in large groups and take candy from people.
 
 - However, many kids want to still celebrate the holidays with their friends like how they did it before the pandemic. This is where our app comes in.

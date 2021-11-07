@@ -7,7 +7,7 @@ const win = "Winner is: " + player;
 const draw = "Draw!";
 const turn = "Turn: " + player;
 let statusDisplay = document.getElementById("status")
-statusDisplay.innerHTML = turn();
+statusDisplay.innerHTML = turn;
 /* 
 0 1 2
 3 4 5
@@ -87,4 +87,4 @@ function redo(){
   document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', click));
-document.querySelector('.restart').addEventListener('click', redo);
+document.querySelector('.redo').addEventListener('click', redo);

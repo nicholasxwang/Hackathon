@@ -7,5 +7,26 @@ section{
 }
 title{
   font-size: 150px;
-  
+  color: red;
+  margin: 5px auto;
 }
+container{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: 306px;
+    margin: 10px auto;
+    background-color: black;
+    color: white;
+
+}
+cell{
+  font-family: "Arial", serif;
+  width: 100px;
+  height: 100px;
+  box-shadow: 5px 5px 5px 5px gray;
+  border: 6px solid black;
+  cursor: pointer;
+  line-height: 100px;
+  font-size: 50px;
+}
+

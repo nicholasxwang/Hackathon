@@ -40,7 +40,35 @@ function updateRect(x,y,l,h){
 function controls(){
   var upx;
   var upy;
-  
+  var inMotion;
+  key = key || window.event;
+  switch(key.keyCode){
+    case 38:  
+    case 87:   
+      upx = position_x;
+      upy = position_y - 5;
+      break;
+    case 37:  
+    case 65:  
+      upx = position_x - 5;
+      upy = position_y;
+      break;
+    case 40:   
+    case 83: 
+      upx = position_x;
+      upy = position_y + 5;
+      break;
+    case 39:   
+    case 68:   
+      upx = position_x + 5;
+      upy = position_y;
+      break;
+    default: return;
+  }
+  allow = moveTo(upx,upy);
+  if(allow == 1){
+    draw(ux,uy,)
+  }
 }
 
 

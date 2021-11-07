@@ -18,7 +18,7 @@ window.addEventListener('load', function() {
 
   document.addEventListener("keydown", function(key) {
     var valid = false;
-    var copy = numbers.slice();
+    var copy = JSON.parse(JSON.stringify(numbers));
 
     switch (key.keyCode) {
       case upArrow:
@@ -49,18 +49,20 @@ window.addEventListener('load', function() {
             var y2 = y;
             while (y2 < 4 && numbers[x][y2] > 0 && (numbers[x][y2+1] == 0 || numbers[x][y2+1] == numbers[x][y2])) {
               valid = true;
-              if (numbers[x][y2+1] == numbers[x][y2]) // merge
-                copy[x][y2+1] *= 2;
-              else
+              if (numbers[x][y2+1] == numbers[x][y2]) {
+                copy[x][y2+1] *= 2; 
+                copy[x][y2] = 0;
+              } else {
                 copy[x][y2+1] = copy[x][y2];
-
               copy[x][y2] = 0;
+                numbers = JSON.parse(JSON.stringify(copy));
+              }
 
               y2++;
             }
           }
         }
-        numbers = copy.slice();
+        numbers = JSON.parse(JSON.stringify(copy));
 
         if (valid)
           generateNewNum();

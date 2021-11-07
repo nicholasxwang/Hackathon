@@ -1,5 +1,6 @@
 var canvas;
 var context;
+var keys;
 var numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
 
 window.onload = function() {
@@ -12,12 +13,13 @@ window.onload = function() {
 window.addEventListener('load', function() {
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
+  keys = document.getElementById("key");
   document.body.appendChild(canvas);
   generateStartingTiles();
   draw();
 
-  document.addEventListener("onkeyup", function(key) {
-    alert(key.keyCode + " pressed")
+  document.addEventListener("keydown", function(key) {
+    keys.innerHTML = key.code;
     switch (key.keyCode) {
       case upArrow:
         for (var x = 1; x < 4; x++) {
@@ -33,6 +35,10 @@ window.addEventListener('load', function() {
         }
     }
     draw();
+  });
+
+  document.addEventListener("keyup", function(key) {
+    keys.innerHTML = "";
   });
 });
 

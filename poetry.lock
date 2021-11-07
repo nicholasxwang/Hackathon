@@ -104,6 +104,14 @@ tls = ["ipaddress"]
 zstd = ["zstandard"]
 
 [[package]]
+name = "pyzipcode3"
+version = "2.2"
+description = "Search by ZIP Code, Place and Geo data"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "werkzeug"
 version = "2.0.2"
 description = "The comprehensive WSGI web application library."
@@ -117,7 +125,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "7b662bf690776a153fe9bb04ab33418e17a40cec40e1d52ad19aa7a511fc0bde"
+content-hash = "b70df7ad2e1b8356aeeb78e46655be08d10a699996cb7d17fde2622473f09a7b"
 
 [metadata.files]
 blinker = [
@@ -325,6 +333,9 @@ pymongo = [
     {file = "pymongo-3.12.1-cp39-cp39-win_amd64.whl", hash = "sha256:979e34db4f3dc5710c18db437aaf282f691092b352e708cb2afd4df287698c76"},
     {file = "pymongo-3.12.1-py2.7-macosx-10.14-intel.egg", hash = "sha256:c04e84ccf590933a266180286d8b6a5fc844078a5d934432628301bd8b5f9ca7"},
     {file = "pymongo-3.12.1.tar.gz", hash = "sha256:704879b6a54c45ad76cea7c6789c1ae7185050acea7afd15b58318fa1932ed45"},
+]
+pyzipcode3 = [
+    {file = "pyzipcode3-2.2-py2.py3-none-any.whl", hash = "sha256:1a01acd670e315f054f44693c64c6da7c6e655c2bae1638df290ee6288ea29eb"},
 ]
 werkzeug = [
     {file = "Werkzeug-2.0.2-py3-none-any.whl", hash = "sha256:63d3dc1cf60e7b7e35e97fa9861f7397283b75d765afcaefd993d6046899de8f"},

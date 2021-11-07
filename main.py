@@ -10,7 +10,16 @@ app.config['MAIL_USERNAME'] = os.getenv("email")
 app.config['MAIL_PASSWORD'] = os.getenv("password")
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+from pyzipcode import ZipCodeDatabase
+zcdb = ZipCodeDatabase()
 
+@app.route("/checkValidZipCode",methods=["POST"])
+def checkzipcode():
+  try:
+    a = zcdb[int(request.form.get("code"))]
+    return True
+  except:
+    return False
 @app.route("/checkBetaCode", methods=["POST"])
 def checkBetaCode():
   with open("static/json/beta_codes.json","r") as file:
@@ -19,12 +28,15 @@ def checkBetaCode():
     file2 = json.load(file2)
   code = request.form.get("code")
   if code in file2:
+    print("code not is valid")
     return "Taken"
   if code in file:
+    print("code is valid")
     # file2.append(code)
     # with open("static/json/taken_codes.json","r") as out:
     #   json.dump(file2,out)
     return "True"
+  print("code not is valid")
   return "False"
 @app.route("/sendEmail")
 def sendEmail():

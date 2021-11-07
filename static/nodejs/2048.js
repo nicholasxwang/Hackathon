@@ -138,32 +138,58 @@ function draw() {
       switch (numbers[x][y]) {
         case 0:
          context.fillStyle = "rgba(243, 156, 18, 0.3)";
-         context.fillRect(x*150, y*150, 148, 148);
-         context.fillStyle = "rgb(256,256,256)";
          break;
         
         case 2:
-          context.fillStyle = "rgba(200, 200, 200, 0.3)";
-          context.fillRect(x*150, y*150, 148, 148);
-          context.fillStyle = "rgb(256,256,256)";
+          context.fillStyle = "rgba(214, 137, 16, 0.3)";
           break;
 
         case 4:
-         context.fillStyle = "rgba(150, 150, 150, 0.3)";
-         context.fillRect(x*150, y*150, 148, 148);
-         context.fillStyle = "rgb(256,256,256)";
+         context.fillStyle = "rgba(156, 100, 12, 0.3)";
          break;
+
+        case 8:
+          context.fillStyle = "rgba(0, 0, 0, 0.3)";
+          break;
 
         case 16:
           context.fillStyle = "rgba(241, 196, 15, 0.3)";
-          context.fillRect(x*150, y*150, 148, 148);
-          context.fillStyle = "rgb(256,256,256)";
+          break; 
+
+        case 32:
+          context.fillStyle = "rgba(183, 149, 11, 0.3)";
+          break; 
+
+        case 64:
+          context.fillStyle = "rgba(211, 84, 0, 0.3)";
+          break; 
+
+        case 128:
+          context.fillStyle = "rgba(160, 64, 0, 0.3)";
+          break;
+        
+        case 256:
+          context.fillStyle = "rgba(135, 54, 0, 0.3)";
+          break; 
+
+        case 512:
+          context.fillStyle = "rgba(135, 54, 0, 0.3)";
+          break; 
+
+        case 1024:
+          context.fillStyle = "rgba(88, 214, 141, 0.3)";
+          break; 
+        
+        case 2048:
+          context.fillStyle = "rgba(14, 102, 85, 0.3)";
           break; 
       }
 
-      if (numbers[x][y] > 0)
+      context.fillRect(x*150, y*150, 148, 148);
+      if (numbers[x][y] > 0) {
+        context.fillStyle = "rgb(256,256,256)";
         context.fillText(numbers[x][y].toString(), 60+x*150, 80+y*150);
-      
+      }
     }
   }
 }
@@ -218,7 +244,7 @@ function generateNewNum(valid) {
     }
   }
 
-  else if (valid) {
+  if (valid) {
     numbers[xs[ Math.floor(Math.random() * xs.length) ]][ys[ Math.floor(Math.random() * ys.length) ]] = Math.random() < 0.2 ? 4 : 2;
   }
 }

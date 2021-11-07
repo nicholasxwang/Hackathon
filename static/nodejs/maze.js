@@ -1,4 +1,4 @@
-var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("maze");
 var ctxt = canvas.getContext("2d");
 var position_x = 425;
 var position_y = 3;
@@ -8,7 +8,7 @@ function build(x,y){
   var maze = new Image();
   updateRect(0, 0, canvas.width, canvas.height);
   maze.onload = function(){
-    context.drawImage(maze, 0, 0);
+    ctxt.drawImage(maze, 0, 0);
     draw(x,y,"#FF0000",false,true);
     ctxt.beginPath();
     ctxt.arc(542, 122, 7, 0, 2 * Math.PI, false);
@@ -17,7 +17,7 @@ function build(x,y){
     ctxt.fill();
 
   };
-  maze.src = "maze.gif";
+  maze.src = "/static/images/maze.gif";
 }
 function draw(x,y,color){
   updateRect(position_x, position_y, 15, 15);
@@ -29,7 +29,7 @@ function draw(x,y,color){
   ctxt.fillStyle = color;
   ctxt.fill();
 }
-build(425,3);
+//build(425,3);
 function updateRect(x,y,l,h){
   ctxt.beginPath();
   ctxt.rect(x,y,l,h);
@@ -73,7 +73,7 @@ function controls(){
   }else if(allow == 2){
     updateRect(0, 0, canvas.width, canvas.height);
     ctxt.font("70px Helvetica");
-    ctxt.fillStyle = "blue";
+    ctxt.fillStyle = "Red";
     ctxt.textAlign = "center";
     ctxt.textBaseline = "middle";
     ctxt.fillText("Congratulations!", canvas.width / 2, canvas.height / 2);
@@ -81,10 +81,10 @@ function controls(){
 
   }
 }
-build(425, 3); 
+//build(425, 3); 
 window.addEventListener("keydown", controls, true);
 function moveTo(dx,dy){
-  var dataaa = context.getImg(destX, destY, 15, 15);
+  var dataaa = ctxt.getImageData(dx, dy, 15, 15);
   var dataa = dataaa.data;
   var movable = 1;
   for(dx >= 0 &&dx<=size_x-15 && dy >= 0 && dy <= size_y - 15){

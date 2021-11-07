@@ -1,4 +1,4 @@
-const postStatus document.querySelector('.status');
+var postStatus = document.querySelector('.status');
 
 let state = ["", "", "", "", "", "", "", "", ""];
 let player = "x";
@@ -6,6 +6,7 @@ let active = true;
 const win = "Winner is: " + player;
 const draw = "Draw!";
 const turn = "Turn: " + player;
+let statusDisplay = document.getElementById("status")
 statusDisplay.innerHTML = turn();
 /* 
 0 1 2
@@ -39,8 +40,8 @@ function handlePlayer() {
     statusDisplay.innerHTML = turn();
 }
 function result(){
-  let win = false;
-  for(int i = 0; i<=7; i++){
+  var win = false;
+  for(let i = 0; i<=7; i++){
     const wincondt = winconds[i];
     let a = state[wincondt[0]];
     let b = state[wincondt[1]];

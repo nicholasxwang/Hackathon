@@ -150,7 +150,7 @@ def dashboard():
   houses_state = []
   houses_country = []
   for i in db.find({}):
-    if zip == i["zip"]:
+    if zip == i["zip"] and name != i["username"]:
       houses_zip.append(i["username"])
       continue
     if ZipCodeDatabase()[int(zip)].place == ZipCodeDatabase()[int(i["zip"])].place:

@@ -13,10 +13,17 @@ app.config['MAIL_USE_SSL'] = True
 
 @app.route("/checkBetaCode", methods=["POST"])
 def checkBetaCode():
-  with open("beta_codes.json","r") as file:
+  with open("static/json/beta_codes.json","r") as file:
     file = json.load(file)
+  with open("static/json/taken_codes.json","r") as file2:
+    file2 = json.load(file2)
   code = request.form.get("code")
+  if code in file2:
+    return "Taken"
   if code in file:
+    # file2.append(code)
+    # with open("static/json/taken_codes.json","r") as out:
+    #   json.dump(file2,out)
     return "True"
   return "False"
 @app.route("/sendEmail")

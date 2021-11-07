@@ -26,7 +26,7 @@ function draw() {
   context.fillStyle = "lightgray";
   
   for (var x = 0; x < 4; x++) {
-    for (var j = 0; j < 4; j++) {
+    for (var y = 0; y < 4; j++) {
       context.fillRect(x*200, y*200, 200, 200);
     }
   }

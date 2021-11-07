@@ -15,6 +15,10 @@ function check() {
   {
     ++ streak;
   	document.getElementById("ansCheck").innerHTML = "Correct! Your streak is " + streak;
+    if (streak % 5 == 0)
+    {
+      document.getElementbyId("streak").innerHTML = "You received 1 candy."
+    }
   }
   else
   {

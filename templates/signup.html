@@ -408,6 +408,13 @@ var value = document.getElementById("password").value;
       }
       });
       request.done(function(data){
+        if ("Success" == data){
+          alert("Success!");
+          window.location.href = "/login";
+        }
+        else{
+          alert("Error: "+data);
+        }
       });
     }else{
       alert("You can't submit yet...Please fill all questions in this form!")

@@ -5,8 +5,8 @@ var position_y = 3;
 var size_x = 556;
 var size_y = 556;
 function build(x,y){
-  var maze = new Image();
   updateRect(0, 0, canvas.width, canvas.height);
+  var maze = new Image();
   maze.onload = function(){
     ctxt.drawImage(maze, 0, 0);
     draw(x,y,"#FF0000",false,true);
@@ -15,7 +15,6 @@ function build(x,y){
     ctxt.closePath();
     ctxt.fillStyle = '#A020F0';
     ctxt.fill();
-
   };
   maze.src = "/static/images/maze.gif";
 }

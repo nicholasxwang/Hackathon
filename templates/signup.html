@@ -16,7 +16,7 @@
   <input type="text" name="username" id="username"><br>
   
   <span class="label">Password:</span><br>
-  <span id="passwordValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><input onkeyup="checkPassword"  type="password" id="password"><br>
+  <span id="passwordValid" style="margin-left:10px;font-size:1.5em;display:none;">✅</span><input onkeyup="checkPassword()"  type="password" id="password"><br>
   
   <span class="label">Zip Code:</span><br>
   <input type="number" id="zipcode"><br>
@@ -312,20 +312,20 @@ function changeEmail() {
   };
 function checkPassword(){
 var value = document.getElementById("password").value;
+alert(value.length)
     if (value.length<6){
-      ("bubble2").style.display="block";
+      document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
       document.getElementById("bubble2").value = "Message: Password must be at least 6 characters long";
       document.getElementById("passwordValid").style.display="none";
-    }else if (value.inclues("1") ||value.inclues("2") || value.inclues("3") || value.inclues("3") || value.inclues("4") || value.inclues("5") || value.inclues("6") || value.inclues("7") || value.inclues("8") || value.inclues("9") || value.inclues("0")){
-      ("bubble2").style.display="block";
+    }else if (value.includes("1") ||value.includes("2") || value.includes("3") || value.includes("3") || value.includes("4") || value.includes("5") || value.includes("6") || value.includes("7") || value.includes("8") || value.includes("9") || value.includes("0")){
+      document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
       document.getElementById("bubble2").value = "Message: Password must include at least 1 number";
       document.getElementById("passwordValid").style.display="none";
-    }
-    }else if (value.inclues("!") ||value.inclues(" ") || value.inclues("#") || value.inclues('"') || value.inclues("'") || value.inclues("$") || value.inclues("%") || value.inclues("&") || value.inclues("(") || value.inclues(")") || value.inclues("*") || value.inclues("+") || value.inclues(",") || value.inclues(".") || value.inclues("-") || value.inclues("/") || value.inclues(":") ||value.inclues("=") || value.inclues("<") || value.inclues(">") || value.inclues(";") || value.inclues("@") || value.inclues("?") || value.inclues("[") || value.inclues("]") || value.inclues("^") || value.inclues("`") || value.inclues("|") || 
-    value.inclues("{") ||value.inclues("}") ){
-      ("bubble2").style.display="block";
+    }else if (value.includes("!") ||value.includes(" ") || value.includes("#") || value.includes('"') || value.includes("'") || value.includes("$") || value.includes("%") || value.includes("&") || value.includes("(") || value.includes(")") || value.includes("*") || value.includes("+") || value.includes(",") || value.includes(".") || value.includes("-") || value.includes("/") || value.includes(":") ||value.includes("=") || value.includes("<") || value.includes(">") || value.includes(";") || value.includes("@") || value.includes("?") || value.includes("[") || value.includes("]") || value.includes("^") || value.includes("`") || value.includes("|") || 
+    value.includes("{") ||value.includes("}") ){
+      document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
       document.getElementById("bubble2").value = "Message: Password must include at least 1 special character";
       document.getElementById("passwordValid").style.display="none";

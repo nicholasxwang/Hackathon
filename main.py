@@ -28,12 +28,15 @@ def signUp():
   import pymongo
   from werkzeug.security import generate_password_hash, check_password_hash
   db =pymongo.MongoClient(os.environ['token']).Users.Users
-  for a in db:
+  count = 0
+  for a in db.find({}):
     if a["email"] == email:
       return "Your email is taken!"
     if a["username"] == username:
       return "Your username is taken!"
-  db.insert_one({"_id":len(db),"email":email,"password":generate_password_hash(password),"zip":zip_code,"beta":beta_code,"country":country,"username":username})
+    count+=1
+  
+  db.insert_one({"_id":count,"email":email,"password":generate_password_hash(password),"zip":zip_code,"beta":beta_code,"country":country,"username":username})
   with open("static/json/taken_codes.json","r") as file:
     file = json.load(file)
   file.append(beta_code)

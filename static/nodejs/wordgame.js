@@ -7,8 +7,6 @@ var hint = hintList[index];
 
 var streak = 0;
 
-document.getElementById("hint").innerHTML = "Hint: " + hint;
-
 function check() {
   var userInput = document.getElementById("input").value.toLowerCase();
   if (userInput == word)

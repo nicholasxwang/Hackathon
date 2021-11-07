@@ -1,6 +1,6 @@
 import pymongo
 import os
-from weurkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 def get_user(email):
   db = pymongo.MongoClient(os.environ['token']).Users.Users.find({})

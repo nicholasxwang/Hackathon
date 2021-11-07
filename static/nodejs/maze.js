@@ -16,7 +16,7 @@ function build(x,y){
     ctxt.fillStyle = '#A020F0';
     ctxt.fill();
   };
-  maze.src = "static/images/maze.gif";
+  maze.src = "/static/images/maze.gif";
 }
 function draw(x,y,color){
   updateRect(position_x, position_y, 15, 15);
@@ -36,10 +36,10 @@ function updateRect(x,y,l,h){
   ctxt.fillStyle = "white";
   ctxt.fill();
 }
-function controls(){
+function controls(key){
   var upx;
   var upy;
-  var inMotion;
+ // var inMotion;
   key = key || window.event;
   switch(key.keyCode){
     case 38:  
@@ -64,9 +64,9 @@ function controls(){
       break;
     default: return;
   }
-  allow = moveTo(upx,upy);
+  let allow = moveTo(upx,upy);
   if(allow == 1){
-    draw(ux,uy,"#FF0000");
+    draw(upx,upy,"#FF0000");
     position_x = upx;
     position_y = upy;
   }else if(allow == 2){
@@ -86,12 +86,12 @@ function moveTo(dx,dy){
   var dataaa = ctxt.getImageData(dx, dy, 15, 15);
   var dataa = dataaa.data;
   var movable = 1;
-  for(dx >= 0 &&dx<=size_x-15 && dy >= 0 && dy <= size_y - 15){
+  if(dx >= 0 &&dx<=size_x-15 && dy >= 0 && dy <= size_y - 15){
     for(var i = 0; i<900; i+=4){
       if(dataa[i] === 0 && dataa[i+1] && dataa[i + 2]=== 0){
         movable = 0;
         break;
-      }else if{
+      }else{
         movable = 2;
         break;
       }

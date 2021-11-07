@@ -26,6 +26,7 @@ def login2():
       resp = make_response(redirect("/dashboard"))
       resp.set_cookie("u", request.form.get("u"))
       return resp
+  return "Error Logging In"
 
 
 @app.route("/signUp",methods=["POST"])
@@ -132,7 +133,7 @@ def dashboard():
   db =pymongo.MongoClient(os.environ['token']).Users.Users
   for i in db.find({}):
     if i["username"] == u:
-      name = i["name"]
+      name = i["username"]
       try:
         candy_num = int(i["candy_num"])
       except:

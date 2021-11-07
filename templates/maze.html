@@ -11,17 +11,29 @@
     <title>replit</title>
     <link href="/static/css/styles.css" rel="stylesheet" type="text/css" />
   </head>
+  <style>
+  .button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+
+    .button1 {background-color: #4CAF50;} /* Green */
+  </style>
+  <a href="/dashboard.html"><button class="button button1">Back</button></a>
+
   <body>
     <canvas width="616" height="556" id="maze">
 
 
     <script src="/static/nodejs/maze.js"></script>
-    <style>
-      space{
-      line-height : 95px;
-      }
-    </style>
-    <a href="/dashboard"><button id = "space">Back</button></a>
+    
   </body>
 </html>
 {% endblock %}

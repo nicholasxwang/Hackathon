@@ -43,8 +43,8 @@ window.addEventListener('load', function() {
 
         numbers = JSON.parse(JSON.stringify(copy));
 
-        if (valid)
-          generateNewNum();
+        
+        generateNewNum(valid);
         break;
 
       case downArrow:
@@ -68,8 +68,8 @@ window.addEventListener('load', function() {
         }
         numbers = JSON.parse(JSON.stringify(copy));
 
-        if (valid)
-          generateNewNum();
+        
+        generateNewNum(valid);
         break;
 
         case leftArrow:
@@ -94,8 +94,8 @@ window.addEventListener('load', function() {
 
           numbers = JSON.parse(JSON.stringify(copy));
 
-          if (valid)
-            generateNewNum();
+          
+          generateNewNum(valid);
           break;
 
         case rightArrow:
@@ -121,8 +121,8 @@ window.addEventListener('load', function() {
 
           numbers = JSON.parse(JSON.stringify(copy));
 
-          if (valid)
-            generateNewNum();
+          
+          generateNewNum(valid);
           break;
     }
     draw();
@@ -170,9 +170,6 @@ function draw() {
 
 function generateStartingTiles() 
 {
-  numbers[0] = [2, 2, 4, 0];
-
-  /*
   var x = Math.floor(Math.random() * 4);
   var y = Math.floor(Math.random() * 4);
 
@@ -186,10 +183,10 @@ function generateStartingTiles()
   
   var num = Math.random() < 0.2 ? 4 : 2;
   numbers[x][y] = num;
-  numbers[x2][y2] = 2;*/
+  numbers[x2][y2] = 2;
 }
 
-function generateNewNum() {
+function generateNewNum(valid) {
   // check if spots avaliable
   xs = [];
   ys = [];
@@ -205,10 +202,23 @@ function generateNewNum() {
 
   if (xs.length == 0) {
     lost = true;
-    alert("Game over!");
+    for (var x = 0; x < 3; x++) {
+      if (numbers[x][y] == numbers[x+1][y])
+        lost = false;
+    }
+
+    if (lost) {
+      for (var y = 0; y < 3; y++) {
+        if (numbers[x][y] == numbers[x][y+1])
+          lost = false;
+      }
+
+      if (lost)
+        alert("Game over!");
+    }
   }
 
-  else {
+  else if (valid) {
     numbers[xs[ Math.floor(Math.random() * xs.length) ]][ys[ Math.floor(Math.random() * ys.length) ]] = Math.random() < 0.2 ? 4 : 2;
   }
 }

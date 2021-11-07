@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 import os
 import json
+import random
+import time
 app = Flask('app')
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -50,56 +52,33 @@ def checkBetaCode():
     return "True"
   print("code not is valid")
   return "False"
-@app.route("/sendEmail")
+@app.route("/sendEmail",methods=["POST"])
 def sendEmail():
+  email = request.get("email")
+  body = request.get("body")
+
   import smtplib, ssl
-  from email.mime.text import MIMEText
-  from email.mime.multipart import MIMEMultipart
 
-  sender_email = os.getenv("email")
-  receiver_email = "nicholas.x.wang@gmail.com"
-  password = os.getenv("passsword")
+  port = 465  # For SSL
+  smtp_server = "smtp.gmail.com"
+  sender_email = os.getenv("email") # Enter your address
+  receiver_email = email  # Enter receiver address
+  code = random.randint(10000,99999)
+  password = os.getenv("password")
+  message = f"""\
+  Verify your Email
 
-  message = MIMEMultipart("alternative")
-  message["Subject"] = "multipart test"
-  message["From"] = sender_email
-  message["To"] = receiver_email
+  Your code is: {code}"""
 
-  # Create the plain-text and HTML version of your message
-  text = """\
-  Hi,
-  How are you?
-  Real Python has many great tutorials:
-  www.realpython.com"""
-  html = """\
-  <html>
-    <body>
-      <p>Hi,<br>
-        How are you?<br>
-        <a href="http://www.realpython.com">Real Python</a> 
-        has many great tutorials.
-      </p>
-    </body>
-  </html>
-  """
-
-  # Turn these into plain/html MIMEText objects
-  part1 = MIMEText(text, "plain")
-  part2 = MIMEText(html, "html")
-
-  # Add HTML/plain-text parts to MIMEMultipart message
-  # The email client will try to render the last part first
-  message.attach(part1)
-  message.attach(part2)
-
-  # Create secure connection with server and send email
   context = ssl.create_default_context()
-  with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-      server.login(sender_email, password)
-      server.sendmail(
-          sender_email, receiver_email, message.as_string()
-      )
-  return "yay"
+  with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message)
+  with open("static/json/email.json","r") as codes:
+    codes = json.load(codes)
+  #Now the user must enter the correct code.
+  time.sleep(120)
+  return "Expired! :joy:"
 @app.route('/')
 def index():
   return render_template("index.html")

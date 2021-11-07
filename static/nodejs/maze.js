@@ -87,7 +87,20 @@ function moveTo(dx,dy){
   var dataaa = context.getImg(destX, destY, 15, 15);
   var dataa = dataaa.data;
   var movable = 1;
-  for()
+  for(dx >= 0 &&dx<=size_x-15 && dy >= 0 && dy <= size_y - 15){
+    for(var i = 0; i<900; i+=4){
+      if(dataa[i] === 0 && dataa[i+1] && dataa[i + 2]=== 0){
+        movable = 0;
+        break;
+      }else if{
+        movable = 2;
+        break;
+      }
+    }
+  }else{
+    movable = 0;
+  }
+  return movable;
 }
-
+build(425,3);
 

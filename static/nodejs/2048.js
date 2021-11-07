@@ -13,8 +13,12 @@ window.onload = function() {
       case upArrow:
         for (var x = 1; x < 4; x++) {
           for (var y = 0; y < 4; y++) {
-            for (var i = y; i > 0; y--) {
+            for (var i = y; i > 1; y--) {
+              if (number[x][i-1] > 0)
+                break;
               
+              number[x][i-1] = number[x][i];
+              number[x][i] = 0;
             }
           }
         }

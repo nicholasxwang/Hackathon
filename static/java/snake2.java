@@ -1,4 +1,6 @@
-public class snake2 {
+import java.applet.*;
+
+public class snake2 extends Applet {
 	public static void main (String[] args)
 	{
 		JFrame obj = new JFrame();

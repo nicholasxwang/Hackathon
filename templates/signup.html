@@ -351,11 +351,11 @@ var value = document.getElementById("password").value;
     request.done(function(data){
       alert(data=="True");
       if (data=="True"){
-      alert("yes");
-      document.getElementById("bubble");.style.display="block";
-      document.getElementById("bubble2");.style.display="none";
-      document.getElementById("bubble").innerHTML = "Message: Valid Beta Code!";
-      document.getElementById("betaValid");.style.display="block";
+        alert("yes");
+        document.getElementById("bubble").style.display="block";
+        document.getElementById("bubble2").style.display="none";
+        document.getElementById("bubble").innerHTML = "Message: Valid Beta Code!";
+        document.getElementById("betaValid").style.display="block";
     }if (data=="Taken"){
       document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";

@@ -21,9 +21,28 @@ window.addEventListener('load', function() {
       case upArrow:
         for (var x = 0; x < 4; x++) {
           for (var y = 1; y < 4; y++) {
-            if (numbers[x][y] > 0 && numbers[x][y-1] == 0) {
-              numbers[x][y-1] = numbers[x][y];
-              numbers[x][y] = 0;
+            x2 = x;
+            y2 = y;
+            while (y2 > 0 && numbers[x2][y2] > 0 && numbers[x2][y2-1] == 0) {
+              numbers[x2][y2-1] = numbers[x2][y2];
+              numbers[x2][y2] = 0;
+
+              y2--;
+            }
+          }
+        }
+        break;
+
+      case downArrow:
+        for (var x = 0; x < 4; x++) {
+          for (var y = 3; y > 0; y++) {
+            x2 = x;
+            y2 = y;
+            while (y2 > 0 && numbers[x2][y2] > 0 && numbers[x2][y2-1] == 0) {
+              numbers[x2][y2+1] = numbers[x2][y2];
+              numbers[x2][y2] = 0;
+
+              y2++;
             }
           }
         }
@@ -38,14 +57,13 @@ window.addEventListener('load', function() {
 });
 
 function draw() {
-  alert(numbers);
   context.font = "50px Verdana serif";
   
   for (var x = 0; x < 4; x++) {
     for (var y = 0; y < 4; y++) {
       switch (numbers[x][y]) {
         case 0:
-         context.fillStyle = "rgb(100, 100, 100)";
+         context.fillStyle = "#F39C12";
          context.fillRect(x*150, y*150, 148, 148);
          context.fillStyle = "rgb(255, 255, 255)";
          break;

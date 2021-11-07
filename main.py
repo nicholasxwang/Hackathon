@@ -1,6 +1,24 @@
 from flask import Flask, render_template, request
+from flask_mail import Mail, Message
+import os
 app = Flask('app')
+mail = Mail(app)
+app.config['MAIL_SERVER']='smtp.mail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = os.getenv("email")
+app.config['MAIL_PASSWORD'] = os.getenv("password")
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 
+@app.route("/sendEmail")
+def sendEmail():
+  e = request.args.get("e")
+  t = request.args.get("t")
+  b = request.args.get("b")
+  msg = Message(t, sender = os.getenv("email"), recipients = [e])
+  msg.body = b
+  mail.send(msg)
+  return "Sent"
 @app.route('/')
 def index():
   return render_template("index.html")

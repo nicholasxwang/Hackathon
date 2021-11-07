@@ -8,7 +8,7 @@
   <form method="POST">
   
   <h1>Sign Up!</h1><div id="bubble"  style="display:none;" class="valid sb1">Message: Valid Email</div><div id="bubble2"  style="display:none;" class="valid2 sb2">Message: Invalid Email</div>
-  <span class="label" onkeyup="changeEmail(this.value)" >Email:</span><br>
+  <span class="label" onkeyup="changeEmail()" >Email:</span><br>
   <input type="email" name="email" id="email"><br>
 
   
@@ -280,7 +280,7 @@
 
   <input type="submit" value="Sign Up!" disabled>
   <a href="/"><button>Back</button></a>
-  <script src="/static/nodejs/signup.js"></script>
+  <!--<script src="/static/nodejs/signup.js"></script>!-->
   <script>
     
 function validateEmail(email) {
@@ -294,9 +294,11 @@ function validate(email) {
     return true;
   } else {
     return false;
-  }
-}
-function changeEmail(value){
+  };
+};
+function changeEmail() {
+    alert("hi");
+    var value = document.getElementById("email");
     if (validate(value)){
       document.getElementById("bubble").style.display="block";
       document.getElementById("bubble2").style.display="none";

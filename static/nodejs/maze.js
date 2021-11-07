@@ -73,5 +73,17 @@ function moveRect(keyPress){
     rectangleX = postX;
     rectangleY = postY;
   }
-  
+  else if (movingAllowed === 2) {
+        clearInterval(intervalVar);
+        makeWhite(0, 0, canvas.width, canvas.height);
+        context.font = "40px Raleway";
+        context.fillStyle = "blue";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText("Congratulations!", canvas.width / 2, canvas.height / 2);
+        window.removeEventListener("keydown", moveRect, true);
+  }
 }
+drawMazeAndRectangle(450, 5);                        
+window.addEventListener("keydown", moveRect, true);
+

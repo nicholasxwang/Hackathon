@@ -301,38 +301,37 @@ function changeEmail() {
     if (validate(value)){
       document.getElementById("bubble").style.display="block";
       document.getElementById("bubble2").style.display="none";
-      document.getElementById("bubble").value = "Message: Valid Email!";
+      document.getElementById("bubble").innerHTML = "Message: Valid Email!";
       document.getElementById("emailValid").style.display="block";
     }else{
       document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").value = "Message: Invalid Email!";
+      document.getElementById("bubble2").innerHTML = "Message: Invalid Email!";
       document.getElementById("emailValid").style.display="none";
     }
   };
 function checkPassword(){
 var value = document.getElementById("password").value;
-alert(value.length)
     if (value.length<6){
       document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").value = "Message: Password must be at least 6 characters long";
+      document.getElementById("bubble2").innerHTML = "Message: Password must be at least 6 characters long";
       document.getElementById("passwordValid").style.display="none";
-    }else if (value.includes("1") ||value.includes("2") || value.includes("3") || value.includes("3") || value.includes("4") || value.includes("5") || value.includes("6") || value.includes("7") || value.includes("8") || value.includes("9") || value.includes("0")){
+    }else if (!value.includes("1") &&!value.includes("2") && !value.includes("3") && !value.includes("3") && !value.includes("4") && !value.includes("5") && !value.includes("6") && !value.includes("7") && !value.includes("8") && !value.includes("9") && !value.includes("0")){
       document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").value = "Message: Password must include at least 1 number";
+      document.getElementById("bubble2").innerHTML = "Message: Password must include at least 1 number";
       document.getElementById("passwordValid").style.display="none";
-    }else if (value.includes("!") ||value.includes(" ") || value.includes("#") || value.includes('"') || value.includes("'") || value.includes("$") || value.includes("%") || value.includes("&") || value.includes("(") || value.includes(")") || value.includes("*") || value.includes("+") || value.includes(",") || value.includes(".") || value.includes("-") || value.includes("/") || value.includes(":") ||value.includes("=") || value.includes("<") || value.includes(">") || value.includes(";") || value.includes("@") || value.includes("?") || value.includes("[") || value.includes("]") || value.includes("^") || value.includes("`") || value.includes("|") || 
-    value.includes("{") ||value.includes("}") ){
+    }else if (!value.includes("!") &&!value.includes(" ") && !value.includes("#") && !value.includes('"') && !value.includes("'") && !value.includes("$") && !value.includes("%") && !value.includes("&") && !value.includes("(") && !value.includes(")") && !value.includes("*") && !value.includes("+") && !value.includes(",") && !value.includes(".") && !value.includes("-") && !value.includes("/") && !value.includes(":") &&!value.includes("=") && !value.includes("<") && !value.includes(">") && !value.includes(";") && !value.includes("@") && !value.includes("?") && !value.includes("[") && !value.includes("]") && !value.includes("^") && !value.includes("`") && !value.includes("|") && 
+    !value.includes("{") &&!value.includes("}") ){
       document.getElementById("bubble2").style.display="block";
       document.getElementById("bubble").style.display="none";
-      document.getElementById("bubble2").value = "Message: Password must include at least 1 special character";
+      document.getElementById("bubble2").innerHTML = "Message: Password must include at least 1 special character";
       document.getElementById("passwordValid").style.display="none";
     }else{
       document.getElementById("bubble").style.display="block";
       document.getElementById("bubble2").style.display="none";
-      document.getElementById("bubble").value = "Message: Valid Password!";
+      document.getElementById("bubble").innerHTML = "Message: Valid Password!";
       document.getElementById("passwordValid").style.display="block";
       document.getElementById
     }

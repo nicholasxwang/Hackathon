@@ -22,6 +22,6 @@ function check() {
     {
     	word = "Halloween";
     }
-    document.getElementById("ansCheck").innerHTML = "Incorrect, the correct answer was " + word + ".";
+    document.getElementById("ansCheck").innerHTML = "Incorrect, the correct answer was " + word + ". Streak has been reset.";
   }
 }

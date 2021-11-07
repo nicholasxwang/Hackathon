@@ -35,7 +35,7 @@ window.addEventListener('load', function() {
                 copy[x][y2] = 0;
                 numbers = JSON.parse(JSON.stringify(copy));
               }
-              
+
               y2--;
             }
           }
@@ -78,11 +78,14 @@ window.addEventListener('load', function() {
               var x2 = x;
               while (x2 > 0 && numbers[x2][y] > 0 && (numbers[x2-1][y] == 0 || numbers[x2-1][y] == numbers[x2][y])) {
                 valid = true;
-                if (numbers[x2-1][y] == numbers[x2][y]) // merge
-                  numbers[x2-1][y] *= 2;
-                else
-                  numbers[x2-1][y] = numbers[x2][y];
-                numbers[x2][y] = 0;
+                if (numbers[x2-1][y] == numbers[x2][y]) {
+                  copy[x2-1][y] *= 2; 
+                  copy[x2][y] = 0;
+                } else {
+                  copy[x2-1][y] = copy[x][y2];
+                  copy[x2][y] = 0;
+                  numbers = JSON.parse(JSON.stringify(copy));
+                }
 
                 x2--;
               }
@@ -101,10 +104,14 @@ window.addEventListener('load', function() {
               var x2 = x;
               while (x2 < 3 && numbers[x2][y] > 0 && (numbers[x2+1][y] == 0 || numbers[x2+1][y] == numbers[x2][y])) {
                 valid = true;
-                if (numbers[x2+1][y] == numbers[x2][y]) // merge
-                  numbers[x2+1][y] *= 2;
-                else
-                  numbers[x2+1][y] = numbers[x2][y];
+                if (numbers[x2+1][y] == numbers[x2][y]) {
+                  copy[x2+1][y] *= 2; 
+                  copy[x2][y] = 0;
+                } else {
+                  copy[x2+1][y] = copy[x][y2];
+                  copy[x2][y] = 0;
+                  numbers = JSON.parse(JSON.stringify(copy));
+                }
                 numbers[x2][y] = 0;
 
                 x2++;

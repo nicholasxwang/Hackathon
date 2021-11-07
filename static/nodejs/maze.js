@@ -73,8 +73,19 @@ function controls(){
   }else if(allow == 2){
     updateRect(0, 0, canvas.width, canvas.height);
     ctxt.font("70px Helvetica");
+    ctxt.fillStyle = "blue";
+    ctxt.textAlign = "center";
+    ctxt.textBaseline = "middle";
+    ctxt.fillText("Congratulations!", canvas.width / 2, canvas.height / 2);
+    window.removeEventListener("keydown", controls, true);
+
   }
 }
-
+build(425, 3); 
+window.addEventListener("keydown", controls, true);
+function moveTo(dx,dy){
+  var data = context.getImageData(destX, destY, 15, 15);
+  
+}
 
 

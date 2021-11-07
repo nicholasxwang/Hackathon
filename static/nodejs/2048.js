@@ -2,13 +2,10 @@ var canvas;
 var context;
 var keys;
 var numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-
-window.onload = function() {
-  var upArrow = 38;
-  var downArrow = 40;
-  var rightArrow = 39;
-  var leftArrow = 37;
-}
+var upArrow = 38;
+var downArrow = 40;
+var rightArrow = 39;
+var leftArrow = 37;
 
 window.addEventListener('load', function() {
   canvas = document.getElementById("canvas");
@@ -22,23 +19,21 @@ window.addEventListener('load', function() {
     keys.innerHTML = key.code;
     switch (key.keyCode) {
       case upArrow:
-        for (var x = 1; x < 4; x++) {
-          for (var y = 0; y < 4; y++) {
-            for (var i = y; i > 1; y--) {
-              if (number[x][i-1] > 0)
-                break;
-              
-              number[x][i-1] = number[x][i];
-              number[x][i] = 0;
+        for (var x = 0; x < 4; x++) {
+          for (var y = 1; y < 4; y++) {
+            if (numbers[x][y] > 0 && numbers[x][y-1] == 0) {
+              numbers[x][y-1] = numbers[x][y];
+              numbers[x][y] = 0;
             }
           }
         }
+        break;
     }
     draw();
   });
 
   document.addEventListener("keyup", function(key) {
-    keys.innerHTML = "";
+    keys.innerHTML = "No key";
   });
 });
 
@@ -88,7 +83,7 @@ function generateStartingTiles()
     y2 = Math.floor(Math.random() * 4);
   }
   
-  var num = Math.random() < 0.25 ? 4 : 2;
+  var num = Math.random() < 0.2 ? 4 : 2;
   numbers[x][y] = num;
   numbers[x2][y2] = 2;
 }

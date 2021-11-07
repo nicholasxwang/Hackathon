@@ -15,8 +15,10 @@ function validate(email) {
 
 
 window.onload = function() {  
+  alert("a");
   var userInput = document.getElementById('email').value;
     userInput.onkeyup = function() {
+      alert("a");
       var value = this.value;
       if (validate(value)){
         document.getElementById("bubble").style.display="block";

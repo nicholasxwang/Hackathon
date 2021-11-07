@@ -16,7 +16,7 @@ function build(x,y){
     ctxt.fillStyle = '#A020F0';
     ctxt.fill();
   };
-  maze.src = "maze.gif";
+  maze.src = "/static/images/maze.gif";
 }
 function draw(x,y,color){
   updateRect(position_x, position_y, 15, 15);

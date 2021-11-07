@@ -20,4 +20,7 @@ def dashboard():
 @app.route("/2048")
 def game2048():
   return render_template("2048.html")
+@app.route("/maze")
+def game_maze():
+  return render_template("maze.html")
 app.run(host='0.0.0.0', port=8080)

@@ -1,9 +1,6 @@
 var canvas;
 var context;
 var numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-alert(numbers);
-
-alert("starting");
 
 window.onload = function() {  
   var upArrow = 38;
@@ -20,14 +17,19 @@ window.addEventListener('load', function() {
   canvas = document.getElementById("canvas");
   context = canvas.getContext("2d");
   document.body.appendChild(canvas);
-  draw(context);
+  draw();
   generateStartingTiles();
 });
 
-function draw(ctx) {
-  var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#FF0000";
-  ctx.fillRect(0,0,150,75);
+function draw() {
+  context.font = "50px Arial serif";
+  context.fillStyle = "lightgray";
+  
+  for (var x = 0; x < 4; x++) {
+    for (var j = 0; j < 4; j++) {
+      context.fillRect(x*200, y*200, 200, 200);
+    }
+  }
 }
 
 function generateStartingTiles() 

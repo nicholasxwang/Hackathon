@@ -15,19 +15,19 @@
 - Based on the number of XP you get, you get a calculated amount of candy!
 - You can interact with your friends by competing your scores (XP) on a leaderboard.
 
-##Behind the Scenes
+## Behind the Scenes
 - We used the MongoDB database in order to extract and store data such as login and passwords, the XP that a user has, and their zip code
 - We used Python to take and store data to/from the server
 - Then, using those values, they would be posted where needed on the website, like the value for XP where the XP value is shown in the webpage
 - In order to publish data about other users and their locations, we have to use the Python library called pyzipcode, which tells us the location of the zipcode, the state, and the city in the US.
 - Then, we print this onto our website, where users choose which “house” they want to trick or treat at!
 
-##Obstacles
+## Obstacles
 - It took nearly 3 hours to get the database configuration and connection figured out.
 - We constantly had bugs surrounding the python and javascript code. Not all of the errors had a clear spot of origin, thus making the debug process exponentially difficult. 
 - We struggled from time to time with getting some games to work on HTML, and some simply just didn’t work, so we had to build new games that could run on HTML, which was a struggle
 
-##What did we Learn?
+## What did we Learn?
 - For our team, this was our first hackathon ever, and there was a lot to learn from this.
 - Our javascript and web development skills improved significantly, to the point where more complex additions were able to be added.
 - We learnt how to integrate the front and back end properly, which is one of the most crucial things to building a website. If we weren’t able to integrate both sides of the website, then it would not have worked out

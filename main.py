@@ -19,7 +19,7 @@ zcdb = ZipCodeDatabase()
 @app.route("/trick/<a>")
 def tricknow(a):
   import random
-  link = random.choice(["/maze","/tictactoe","/2048"])
+  link = random.choice(["/maze","/2048"])
   return redirect(link)
 @app.route("/login",methods=["POST"])
 def login2():

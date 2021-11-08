@@ -72,8 +72,6 @@ window.addEventListener('load', function() {
           }
         }
         
-
-        
         generateNewNum(valid);
         break;
 
